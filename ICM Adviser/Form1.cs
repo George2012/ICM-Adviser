@@ -156,6 +156,12 @@ namespace ICM_Adviser
             Decimal Range = Convert.ToDecimal(this.textBoxRange.Text);
             string  text = textBoxDescription.Text;
 
+            //Remove range if already exist
+            if (Description.ContainsKey(Range))
+            {
+                Description.Remove(Range);
+            }
+
             Description.Add(Range, text);
         }
 
