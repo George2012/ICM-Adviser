@@ -52,6 +52,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonDescription = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownM)).BeginInit();
@@ -194,6 +195,8 @@
             this.textBoxRange.Name = "textBoxRange";
             this.textBoxRange.Size = new System.Drawing.Size(52, 20);
             this.textBoxRange.TabIndex = 10;
+            this.textBoxRange.Text = "0";
+            this.textBoxRange.TextChanged += new System.EventHandler(this.textBoxRange_TextChanged);
             // 
             // buttonShow
             // 
@@ -220,7 +223,7 @@
             this.textBoxDescription.Location = new System.Drawing.Point(40, 224);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(198, 111);
+            this.textBoxDescription.Size = new System.Drawing.Size(198, 83);
             this.textBoxDescription.TabIndex = 13;
             // 
             // menuStrip1
@@ -293,11 +296,22 @@
             this.editModeToolStripMenuItem.Text = "Edit Mode";
             this.editModeToolStripMenuItem.Click += new System.EventHandler(this.editModeToolStripMenuItem_Click);
             // 
+            // buttonDescription
+            // 
+            this.buttonDescription.Location = new System.Drawing.Point(40, 313);
+            this.buttonDescription.Name = "buttonDescription";
+            this.buttonDescription.Size = new System.Drawing.Size(198, 23);
+            this.buttonDescription.TabIndex = 15;
+            this.buttonDescription.Text = "Save Description";
+            this.buttonDescription.UseVisualStyleBackColor = true;
+            this.buttonDescription.Click += new System.EventHandler(this.buttonDescription_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 347);
+            this.Controls.Add(this.buttonDescription);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonShow);
@@ -352,6 +366,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editModeToolStripMenuItem;
+        private System.Windows.Forms.Button buttonDescription;
     }
 }
 

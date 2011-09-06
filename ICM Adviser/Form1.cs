@@ -20,6 +20,9 @@ namespace ICM_Adviser
 
         private Decimal[, ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M];
 
+        Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
+
+
         private void resetRange()
         {
              for(int pl = 0 ; pl < MAX_PL ; pl++)
@@ -140,6 +143,31 @@ namespace ICM_Adviser
                 this.textBoxRange.ReadOnly       = false;
                 this.textBoxDescription.ReadOnly = false;
             }
+        }
+
+        private void buttonDescription_Click(object sender, EventArgs e)
+        {
+            Decimal Range = Convert.ToDecimal(this.textBoxRange.Text);
+            string  text = textBoxDescription.Text;
+
+            Description.Add(Range, text);
+        }
+
+        private void textBoxRange_TextChanged(object sender, EventArgs e)
+        {
+            Decimal range = Convert.ToDecimal(this.textBoxRange.Text);
+            string text;
+
+            if (Description.ContainsKey(range)) // True
+            {
+                text = Description[range];
+            }
+            else
+            {
+                text = "N/A";
+            }
+
+            this.textBoxDescription.Text = text;
         }
     }
 }
