@@ -1,0 +1,9 @@
+C:\project\ICM Adviser\ICM Adviser\bin\Debug\ICM Adviser.exe
+C:\project\ICM Adviser\ICM Adviser\bin\Debug\ICM Adviser.pdb
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\ICM_Adviser.Form1.resources
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\ICM_Adviser.Properties.Resources.resources
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\ICM Adviser.exe
+C:\project\ICM Adviser\ICM Adviser\obj\x86\Debug\ICM Adviser.pdb
