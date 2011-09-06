@@ -174,5 +174,10 @@ namespace ICM_Adviser
 
             this.textBoxDescription.Text = text;
         }
+
+        private void saveAsDescriptionMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
