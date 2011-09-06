@@ -125,5 +125,21 @@ namespace ICM_Adviser
         {
 
         }
+
+        private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.editModeToolStripMenuItem.Checked == true)
+            {
+                this.editModeToolStripMenuItem.Checked = false;
+                this.textBoxRange.ReadOnly       = true;
+                this.textBoxDescription.ReadOnly = true;
+            }
+            else
+            {
+                this.editModeToolStripMenuItem.Checked = true;
+                this.textBoxRange.ReadOnly       = false;
+                this.textBoxDescription.ReadOnly = false;
+            }
+        }
     }
 }
