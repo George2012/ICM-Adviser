@@ -86,7 +86,7 @@
             // labelM
             // 
             this.labelM.AutoSize = true;
-            this.labelM.Location = new System.Drawing.Point(206, 72);
+            this.labelM.Location = new System.Drawing.Point(190, 72);
             this.labelM.Name = "labelM";
             this.labelM.Size = new System.Drawing.Size(16, 13);
             this.labelM.TabIndex = 2;
@@ -117,7 +117,7 @@
             // radioButtonReise
             // 
             this.radioButtonReise.AutoSize = true;
-            this.radioButtonReise.Location = new System.Drawing.Point(205, 30);
+            this.radioButtonReise.Location = new System.Drawing.Point(193, 30);
             this.radioButtonReise.Name = "radioButtonReise";
             this.radioButtonReise.Size = new System.Drawing.Size(33, 17);
             this.radioButtonReise.TabIndex = 4;
@@ -166,7 +166,7 @@
             // 
             // numericUpDownM
             // 
-            this.numericUpDownM.Location = new System.Drawing.Point(205, 109);
+            this.numericUpDownM.Location = new System.Drawing.Point(193, 109);
             this.numericUpDownM.Maximum = new decimal(new int[] {
             10,
             0,
@@ -178,7 +178,7 @@
             0,
             0});
             this.numericUpDownM.Name = "numericUpDownM";
-            this.numericUpDownM.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownM.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownM.TabIndex = 8;
             this.numericUpDownM.Value = new decimal(new int[] {
             1,
@@ -197,9 +197,9 @@
             // 
             // textBoxRange
             // 
-            this.textBoxRange.Location = new System.Drawing.Point(111, 149);
+            this.textBoxRange.Location = new System.Drawing.Point(108, 145);
             this.textBoxRange.Name = "textBoxRange";
-            this.textBoxRange.Size = new System.Drawing.Size(52, 20);
+            this.textBoxRange.Size = new System.Drawing.Size(58, 20);
             this.textBoxRange.TabIndex = 10;
             this.textBoxRange.Text = "0";
             this.textBoxRange.TextChanged += new System.EventHandler(this.textBoxRange_TextChanged);
@@ -209,7 +209,7 @@
             // 
             this.buttonShow.Location = new System.Drawing.Point(36, 186);
             this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(56, 23);
+            this.buttonShow.Size = new System.Drawing.Size(66, 23);
             this.buttonShow.TabIndex = 11;
             this.buttonShow.Text = "Show";
             this.buttonShow.UseVisualStyleBackColor = true;
@@ -217,9 +217,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(111, 184);
+            this.buttonSave.Location = new System.Drawing.Point(108, 184);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(55, 27);
+            this.buttonSave.Size = new System.Drawing.Size(58, 27);
             this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
