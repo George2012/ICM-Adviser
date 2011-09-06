@@ -155,6 +155,11 @@ namespace ICM_Adviser
 
         private void textBoxRange_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBoxRange_TextValidated(object sender, EventArgs e)
+        {
             Decimal range = Convert.ToDecimal(this.textBoxRange.Text);
             string text;
 
