@@ -50,13 +50,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.buttonDescription = new System.Windows.Forms.Button();
             this.descriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDescriptionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDescriptionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.buttonDescription = new System.Windows.Forms.Button();
             this.openDescriptionDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveDescriptionDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPL)).BeginInit();
@@ -128,7 +128,7 @@
             // radioButtonFold
             // 
             this.radioButtonFold.AutoSize = true;
-            this.radioButtonFold.Location = new System.Drawing.Point(40, 30);
+            this.radioButtonFold.Location = new System.Drawing.Point(36, 30);
             this.radioButtonFold.Name = "radioButtonFold";
             this.radioButtonFold.Size = new System.Drawing.Size(31, 17);
             this.radioButtonFold.TabIndex = 5;
@@ -259,28 +259,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveAsToolStripMenuItem.Text = "Save As..";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // modeToolStripMenuItem
@@ -300,20 +300,6 @@
             this.editModeToolStripMenuItem.Text = "Edit Mode";
             this.editModeToolStripMenuItem.Click += new System.EventHandler(this.editModeToolStripMenuItem_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // buttonDescription
-            // 
-            this.buttonDescription.Location = new System.Drawing.Point(40, 313);
-            this.buttonDescription.Name = "buttonDescription";
-            this.buttonDescription.Size = new System.Drawing.Size(198, 23);
-            this.buttonDescription.TabIndex = 15;
-            this.buttonDescription.Text = "Save Description";
-            this.buttonDescription.UseVisualStyleBackColor = true;
-            this.buttonDescription.Click += new System.EventHandler(this.buttonDescription_Click);
-            // 
             // descriptionToolStripMenuItem
             // 
             this.descriptionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -329,6 +315,7 @@
             this.openDescriptionMenuItem.Name = "openDescriptionMenuItem";
             this.openDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openDescriptionMenuItem.Text = "Open";
+            this.openDescriptionMenuItem.Click += new System.EventHandler(this.openDescriptionMenuItem_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
@@ -343,6 +330,20 @@
             this.saveDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveDescriptionMenuItem.Text = "Save";
             this.saveDescriptionMenuItem.Click += new System.EventHandler(this.saveDescriptionMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // buttonDescription
+            // 
+            this.buttonDescription.Location = new System.Drawing.Point(40, 313);
+            this.buttonDescription.Name = "buttonDescription";
+            this.buttonDescription.Size = new System.Drawing.Size(198, 23);
+            this.buttonDescription.TabIndex = 15;
+            this.buttonDescription.Text = "Save Description";
+            this.buttonDescription.UseVisualStyleBackColor = true;
+            this.buttonDescription.Click += new System.EventHandler(this.buttonDescription_Click);
             // 
             // openDescriptionDialog
             // 

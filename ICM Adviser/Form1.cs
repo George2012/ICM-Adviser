@@ -35,10 +35,19 @@ namespace ICM_Adviser
                     }           
         }
 
+        private void resetDescription()
+        {
+            foreach (KeyValuePair<Decimal, string> entry in Description)
+            {
+                Description.Remove(entry.Key);
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
             resetRange();
+            resetDescription();
         }
 
         private void buttonShow_Click(object sender, EventArgs e)
@@ -131,8 +140,33 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
-            //TODO: 
-            // Add reading XML here
+            XmlTextReader reader = new XmlTextReader(i_filename);
+
+
+            // EXAMPLE:  Read XML
+
+            //while (reader.Read())
+            //{
+            //    switch (reader.NodeType)
+            //    {
+            //        case XmlNodeType.Element: // The node is an Element
+            //            Console.WriteLine("Element: " + reader.Name);
+            //            while (reader.MoveToNextAttribute()) // Read attributes
+            //                Console.WriteLine("  Attribute: [" +
+            //                 reader.Name + "] = '"
+            //                   + reader.Value + "'");
+            //            break;
+            //        case XmlNodeType.DocumentType: // The node is a DocumentType
+            //            Console.WriteLine("Document: " + reader.Value);
+            //            break;
+            //        case XmlNodeType.Comment:
+            //            Console.WriteLine("Comment: " + reader.Value);
+            //            break;
+            //    }
+            //}
+        
+
+          reader.Close();
         }
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -231,6 +265,55 @@ namespace ICM_Adviser
         private void saveDescriptionMenuItem_Click(object sender, EventArgs e)
         {
             saveDescriptionXML();
+        }
+
+        private void openDescriptionMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dlgValue = openDescriptionDialog.ShowDialog();
+            if (dlgValue == DialogResult.OK)
+            {
+                // save
+                string filename = openDescriptionDialog.FileName;
+
+                openDescriptionXML(filename);
+            }
+        }
+
+        private void openDescriptionXML(string i_filename)
+        {
+            resetDescription();
+
+            XmlTextReader reader = new XmlTextReader(i_filename);
+
+            while (reader.Read())
+            {
+                switch (reader.NodeType)
+                {
+                    case XmlNodeType.Element:
+                        {
+                            Decimal Range = 0;
+
+                            while (reader.MoveToNextAttribute())
+                            {
+                                if (reader.Name == "Range")
+                                {
+                                    Range = Convert.ToDecimal(reader.Value);
+                                }
+                            }
+
+                            String text = reader.Value;
+
+                            //Remove range if already exist
+                            if (Description.ContainsKey(Range))
+                            {
+                                Description.Remove(Range);
+                            }
+
+                            Description.Add(Range, text);
+                        }
+                        break;
+                }
+            }
         }
     }
 }
