@@ -109,5 +109,21 @@ namespace ICM_Adviser
             if (myXmlTextWriter != null)
                 myXmlTextWriter.Close();
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dlgValue = openFileDialog1.ShowDialog();
+            if (dlgValue == DialogResult.OK)
+            {
+                // save
+                string filename = openFileDialog1.FileName;
+                openXML(filename);
+            }
+        }
+
+        private void openXML(string i_filename)
+        {
+
+        }
     }
 }
