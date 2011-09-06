@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.IO;
 
 namespace ICM_Adviser
 {
@@ -81,6 +82,10 @@ namespace ICM_Adviser
         {
             XmlTextWriter myXmlTextWriter = null;
 
+            //Delete existing XML before writing 
+            //becouse elsewhere file doesn't updated
+            File.Delete(m_filename);
+
             myXmlTextWriter = new XmlTextWriter(m_filename, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
@@ -97,7 +102,7 @@ namespace ICM_Adviser
                         myXmlTextWriter.WriteStartElement("M");
                         myXmlTextWriter.WriteAttributeString("Value", Convert.ToString(m));
 
-                        myXmlTextWriter.WriteElementString("Range", Range[pl, p, m].ToString());
+                        myXmlTextWriter.WriteString(Range[pl, p, m].ToString());
 
                         myXmlTextWriter.WriteEndElement();
                     }
