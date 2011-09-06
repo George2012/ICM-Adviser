@@ -17,6 +17,7 @@ namespace ICM_Adviser
         const int MAX_M  = 10;
 
         private string m_filename = "C:\\XMLtest\\test.xml";
+        private string m_descriptionFilename = "C:\\XMLtest\\description.xml";
 
         private Decimal[, ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M];
 
@@ -68,8 +69,7 @@ namespace ICM_Adviser
                 // save
                 m_filename = saveFileDialog1.FileName;
                 saveXML();
-            }
-           
+            }        
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,7 +126,8 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
-
+            //TODO: 
+            // Add reading XML here
         }
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,7 +178,48 @@ namespace ICM_Adviser
 
         private void saveAsDescriptionMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult dlgValue = saveDescriptionDialog.ShowDialog();
+            if (dlgValue == DialogResult.OK)
+            {
+                // save
+                m_descriptionFilename = saveDescriptionDialog.FileName;
+                saveDescriptionXML();
+            }
+        }
 
+        private void saveDescriptionXML()
+        {
+            //EXAMPLE: itarate throught dictionary
+
+            //foreach(KeyValuePair<String,String> entry in MyDic)
+            //{
+            //    // do something with entry.Value or entry.Key
+            //}
+
+
+            XmlTextWriter myXmlTextWriter = new XmlTextWriter(m_descriptionFilename, null);
+            myXmlTextWriter.Formatting = Formatting.Indented;
+
+
+            foreach (KeyValuePair<Decimal, string> entry in Description)
+            {
+                myXmlTextWriter.WriteStartElement("Range");
+                myXmlTextWriter.WriteAttributeString("Value", Convert.ToString(entry.Key));
+                myXmlTextWriter.WriteString(entry.Value);
+                myXmlTextWriter.WriteEndElement();
+            }
+
+            //Write the XML to file and close the writer
+            myXmlTextWriter.Flush();
+            myXmlTextWriter.Close();
+            if (myXmlTextWriter != null)
+                myXmlTextWriter.Close();
+
+        }
+
+        private void saveDescriptionMenuItem_Click(object sender, EventArgs e)
+        {
+            saveDescriptionXML();
         }
     }
 }

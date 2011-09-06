@@ -342,6 +342,7 @@
             this.saveDescriptionMenuItem.Name = "saveDescriptionMenuItem";
             this.saveDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveDescriptionMenuItem.Text = "Save";
+            this.saveDescriptionMenuItem.Click += new System.EventHandler(this.saveDescriptionMenuItem_Click);
             // 
             // openDescriptionDialog
             // 
