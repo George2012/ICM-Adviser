@@ -295,12 +295,14 @@ namespace ICM_Adviser
 
                             while (reader.MoveToNextAttribute())
                             {
-                                if (reader.Name == "Range")
+                                if (reader.Name == "Value")
                                 {
                                     Range = Convert.ToDecimal(reader.Value);
                                 }
                             }
 
+                            //reader.MoveToContent();
+                            reader.MoveToElement();
                             String text = reader.Value;
 
                             //Remove range if already exist
