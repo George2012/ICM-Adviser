@@ -16,9 +16,9 @@ namespace ICM_Adviser
         enum Action : int { F = 0, L = 1, R = 2 }
 
         //2160 permutations
-        const int MAX_PL = 9; // 2 to 9
-        const int MAX_P  = 8; // 0 to 8
-        const int MAX_M  = 10; // 1 to 10 
+        const int MAX_PL = 9  + 1;     // 2 to 9
+        const int MAX_P  = 8  + 1; // 0 to 8
+        const int MAX_M  = 10 + 1;    // 1 to 10 
         const int MAX_ACTION = 2;
 
         private string m_filename = "C:\\XMLtest\\Ranges.xml";
@@ -29,6 +29,8 @@ namespace ICM_Adviser
         private Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
 
         private Action action = Action.F;
+
+        private bool m_isInitialized = false;
 
         private void resetRange()
         {
@@ -57,33 +59,50 @@ namespace ICM_Adviser
 
             openXML(m_filename);
             openDescriptionXML(m_descriptionFilename);
+
+            listBoxPL.SelectedIndex = 0;
+            listBoxP.SelectedIndex  = 0;
+            listBoxM.SelectedIndex  = 0;
+
+            m_isInitialized = true;
         }
 
         private void buttonShow_Click(object sender, EventArgs e)
         {
-            int PL = Convert.ToInt32(this.numericUpDownPL.Value);
-            int P = Convert.ToInt32(this.numericUpDownP.Value);
-            int M = Convert.ToInt32(this.numericUpDownM.Value);
+            updateData();
+        }
+
+        private void updateData()
+        {
+            int PL = Convert.ToInt32(listBoxPL.SelectedItem);
+            int P = Convert.ToInt32(listBoxP.SelectedItem);
+            int M = Convert.ToInt32(listBoxM.SelectedItem);
 
             int A = Convert.ToInt32(action);
 
-            decimal res = Range[PL - 1, P - 1, M - 1, A ];
+            decimal res = Range[PL , P , M , A];
             this.textBoxRange.Text = res.ToString();
 
             UpdateDescription();
         }
 
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            int PL = Convert.ToInt32(this.numericUpDownPL.Value);
-            int P = Convert.ToInt32(this.numericUpDownP.Value);
-            int M = Convert.ToInt32(this.numericUpDownM.Value);
+            //int PL = Convert.ToInt32(this.numericUpDownPL.Value);
+            //int P = Convert.ToInt32(this.numericUpDownP.Value);
+            //int M = Convert.ToInt32(this.numericUpDownM.Value);
+
+
+            int PL = Convert.ToInt32(listBoxPL.SelectedItem);
+            int P  = Convert.ToInt32(listBoxP.SelectedItem);
+            int M  = Convert.ToInt32(listBoxM.SelectedItem);
 
             int A = Convert.ToInt32(action);
 
             decimal res = Convert.ToDecimal(this.textBoxRange.Text);
 
-            Range[PL - 1, P - 1, M - 1 , A ] = res;
+            Range[PL , P , M  , A ] = res;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -216,7 +235,7 @@ namespace ICM_Adviser
                            Decimal range = Convert.ToDecimal(reader.Value);
                            reader.Read();
 
-                           Range[PL - 1, P - 1, M - 1 , A] = range;
+                           Range[PL , P , M  , A] = range;
                        }
                        break;
                }
@@ -232,12 +251,16 @@ namespace ICM_Adviser
                 this.editModeToolStripMenuItem.Checked = false;
                 this.textBoxRange.ReadOnly       = true;
                 this.textBoxDescription.ReadOnly = true;
+                this.buttonSave.Visible = false;
+                this.buttonDescription.Visible = false;
             }
             else
             {
                 this.editModeToolStripMenuItem.Checked = true;
                 this.textBoxRange.ReadOnly       = false;
                 this.textBoxDescription.ReadOnly = false;
+                this.buttonSave.Visible = true;
+                this.buttonDescription.Visible = true;
             }
         }
 
@@ -392,16 +415,58 @@ namespace ICM_Adviser
         private void radioButtonF_CheckedChanged(object sender, EventArgs e)
         {
             action = Action.F;
+
+            if (action == Action.F)
+            {
+                updateData();
+            }
         }
 
         private void radioButtonL_CheckedChanged(object sender, EventArgs e)
         {
             action = Action.L;
+
+            if (action == Action.L)
+            {
+                updateData();
+            }
         }
 
         private void radioButtonR_CheckedChanged(object sender, EventArgs e)
         {
-            action = Action.R;
+            if (action == Action.R)
+            {
+                updateData();
+            }
+        }
+
+        private void listBoxPL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(m_isInitialized == true)
+            {
+                 updateData();
+            }
+        }
+
+        private void listBoxP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(m_isInitialized == true)
+            {
+                 updateData();
+            }
+        }
+
+        private void listBoxM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(m_isInitialized == true)
+            {
+                 updateData();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

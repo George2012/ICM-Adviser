@@ -31,15 +31,11 @@
             this.labelPL = new System.Windows.Forms.Label();
             this.labelP = new System.Windows.Forms.Label();
             this.labelM = new System.Windows.Forms.Label();
-            this.numericUpDownPL = new System.Windows.Forms.NumericUpDown();
             this.radioButtonR = new System.Windows.Forms.RadioButton();
             this.radioButtonL = new System.Windows.Forms.RadioButton();
             this.radioButtonF = new System.Windows.Forms.RadioButton();
-            this.numericUpDownP = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownM = new System.Windows.Forms.NumericUpDown();
             this.labelRange = new System.Windows.Forms.Label();
             this.textBoxRange = new System.Windows.Forms.TextBox();
-            this.buttonShow = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -59,9 +55,9 @@
             this.buttonDescription = new System.Windows.Forms.Button();
             this.openDescriptionDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveDescriptionDialog = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownM)).BeginInit();
+            this.listBoxPL = new System.Windows.Forms.ListBox();
+            this.listBoxP = new System.Windows.Forms.ListBox();
+            this.listBoxM = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,28 +88,6 @@
             this.labelM.TabIndex = 2;
             this.labelM.Text = "M";
             // 
-            // numericUpDownPL
-            // 
-            this.numericUpDownPL.Location = new System.Drawing.Point(36, 109);
-            this.numericUpDownPL.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.numericUpDownPL.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownPL.Name = "numericUpDownPL";
-            this.numericUpDownPL.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDownPL.TabIndex = 3;
-            this.numericUpDownPL.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            // 
             // radioButtonR
             // 
             this.radioButtonR.Location = new System.Drawing.Point(182, 32);
@@ -143,49 +117,10 @@
             this.radioButtonF.Text = "F";
             this.radioButtonF.CheckedChanged += new System.EventHandler(this.radioButtonF_CheckedChanged);
             // 
-            // numericUpDownP
-            // 
-            this.numericUpDownP.Location = new System.Drawing.Point(108, 109);
-            this.numericUpDownP.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numericUpDownP.Name = "numericUpDownP";
-            this.numericUpDownP.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownP.TabIndex = 7;
-            this.numericUpDownP.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownM
-            // 
-            this.numericUpDownM.Location = new System.Drawing.Point(193, 109);
-            this.numericUpDownM.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownM.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownM.Name = "numericUpDownM";
-            this.numericUpDownM.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDownM.TabIndex = 8;
-            this.numericUpDownM.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // labelRange
             // 
             this.labelRange.AutoSize = true;
-            this.labelRange.Location = new System.Drawing.Point(37, 152);
+            this.labelRange.Location = new System.Drawing.Point(246, 100);
             this.labelRange.Name = "labelRange";
             this.labelRange.Size = new System.Drawing.Size(42, 13);
             this.labelRange.TabIndex = 9;
@@ -193,27 +128,17 @@
             // 
             // textBoxRange
             // 
-            this.textBoxRange.Location = new System.Drawing.Point(108, 145);
+            this.textBoxRange.Location = new System.Drawing.Point(354, 100);
             this.textBoxRange.Name = "textBoxRange";
-            this.textBoxRange.Size = new System.Drawing.Size(58, 20);
+            this.textBoxRange.Size = new System.Drawing.Size(83, 20);
             this.textBoxRange.TabIndex = 10;
             this.textBoxRange.Text = "0";
             this.textBoxRange.TextChanged += new System.EventHandler(this.textBoxRange_TextChanged);
             this.textBoxRange.Validated += new System.EventHandler(this.textBoxRange_TextValidated);
             // 
-            // buttonShow
-            // 
-            this.buttonShow.Location = new System.Drawing.Point(36, 186);
-            this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(66, 23);
-            this.buttonShow.TabIndex = 11;
-            this.buttonShow.Text = "Show";
-            this.buttonShow.UseVisualStyleBackColor = true;
-            this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
-            // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(108, 184);
+            this.buttonSave.Location = new System.Drawing.Point(149, 250);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(58, 27);
             this.buttonSave.TabIndex = 12;
@@ -223,7 +148,7 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(40, 224);
+            this.textBoxDescription.Location = new System.Drawing.Point(239, 151);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(198, 83);
@@ -237,7 +162,7 @@
             this.descriptionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(273, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(481, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -333,9 +258,9 @@
             // 
             // buttonDescription
             // 
-            this.buttonDescription.Location = new System.Drawing.Point(40, 313);
+            this.buttonDescription.Location = new System.Drawing.Point(239, 250);
             this.buttonDescription.Name = "buttonDescription";
-            this.buttonDescription.Size = new System.Drawing.Size(198, 23);
+            this.buttonDescription.Size = new System.Drawing.Size(198, 27);
             this.buttonDescription.TabIndex = 15;
             this.buttonDescription.Text = "Save Description";
             this.buttonDescription.UseVisualStyleBackColor = true;
@@ -345,33 +270,90 @@
             // 
             this.openDescriptionDialog.FileName = "Description.xml";
             // 
+            // listBoxPL
+            // 
+            this.listBoxPL.DisplayMember = "2";
+            this.listBoxPL.FormattingEnabled = true;
+            this.listBoxPL.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.listBoxPL.Location = new System.Drawing.Point(35, 100);
+            this.listBoxPL.Name = "listBoxPL";
+            this.listBoxPL.Size = new System.Drawing.Size(20, 134);
+            this.listBoxPL.TabIndex = 19;
+            this.listBoxPL.ValueMember = "2";
+            this.listBoxPL.SelectedIndexChanged += new System.EventHandler(this.listBoxPL_SelectedIndexChanged);
+            // 
+            // listBoxP
+            // 
+            this.listBoxP.FormattingEnabled = true;
+            this.listBoxP.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.listBoxP.Location = new System.Drawing.Point(105, 100);
+            this.listBoxP.Name = "listBoxP";
+            this.listBoxP.Size = new System.Drawing.Size(27, 134);
+            this.listBoxP.TabIndex = 20;
+            this.listBoxP.SelectedIndexChanged += new System.EventHandler(this.listBoxP_SelectedIndexChanged);
+            // 
+            // listBoxM
+            // 
+            this.listBoxM.FormattingEnabled = true;
+            this.listBoxM.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.listBoxM.Location = new System.Drawing.Point(182, 100);
+            this.listBoxM.Name = "listBoxM";
+            this.listBoxM.Size = new System.Drawing.Size(25, 134);
+            this.listBoxM.TabIndex = 21;
+            this.listBoxM.SelectedIndexChanged += new System.EventHandler(this.listBoxM_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 347);
+            this.ClientSize = new System.Drawing.Size(481, 287);
+            this.Controls.Add(this.listBoxM);
+            this.Controls.Add(this.listBoxP);
+            this.Controls.Add(this.listBoxPL);
             this.Controls.Add(this.buttonDescription);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonShow);
             this.Controls.Add(this.textBoxRange);
             this.Controls.Add(this.labelRange);
-            this.Controls.Add(this.numericUpDownM);
-            this.Controls.Add(this.numericUpDownP);
             this.Controls.Add(this.radioButtonF);
             this.Controls.Add(this.radioButtonL);
             this.Controls.Add(this.radioButtonR);
-            this.Controls.Add(this.numericUpDownPL);
             this.Controls.Add(this.labelM);
             this.Controls.Add(this.labelP);
             this.Controls.Add(this.labelPL);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownM)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -384,15 +366,11 @@
         private System.Windows.Forms.Label labelPL;
         private System.Windows.Forms.Label labelP;
         private System.Windows.Forms.Label labelM;
-        private System.Windows.Forms.NumericUpDown numericUpDownPL;
         private System.Windows.Forms.RadioButton radioButtonR;
         private System.Windows.Forms.RadioButton radioButtonL;
         private System.Windows.Forms.RadioButton radioButtonF;
-        private System.Windows.Forms.NumericUpDown numericUpDownP;
-        private System.Windows.Forms.NumericUpDown numericUpDownM;
         private System.Windows.Forms.Label labelRange;
         private System.Windows.Forms.TextBox textBoxRange;
-        private System.Windows.Forms.Button buttonShow;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -412,6 +390,9 @@
         private System.Windows.Forms.ToolStripMenuItem saveDescriptionMenuItem;
         private System.Windows.Forms.OpenFileDialog openDescriptionDialog;
         private System.Windows.Forms.SaveFileDialog saveDescriptionDialog;
+        private System.Windows.Forms.ListBox listBoxPL;
+        private System.Windows.Forms.ListBox listBoxP;
+        private System.Windows.Forms.ListBox listBoxM;
     }
 }
 
