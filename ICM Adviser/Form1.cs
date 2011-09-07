@@ -15,13 +15,14 @@ namespace ICM_Adviser
     {
         enum Action : int { F = 0, L = 1, R = 2 }
 
-        const int MAX_PL = 9;
-        const int MAX_P  = 8;
-        const int MAX_M  = 10;
+        //2160 permutations
+        const int MAX_PL = 9; // 2 to 9
+        const int MAX_P  = 8; // 0 to 8
+        const int MAX_M  = 10; // 1 to 10 
         const int MAX_ACTION = 2;
 
-        private string m_filename = "C:\\XMLtest\\test.xml";
-        private string m_descriptionFilename = "C:\\XMLtest\\myDescription.xml";
+        private string m_filename = "C:\\XMLtest\\Ranges.xml";
+        private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
      
         private Decimal[, , ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M, MAX_ACTION];
 
