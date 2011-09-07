@@ -146,33 +146,33 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
-            XmlTextReader reader = new XmlTextReader(i_filename);
+           XmlTextReader reader = new XmlTextReader(i_filename);
 
+           switch (reader.NodeType)
+           {
+                case XmlNodeType.Element:
+                    {
+                        if (reader.Name == "Ranges")
+                        {
+                            break;
+                        }
 
-            // EXAMPLE:  Read XML
+                        Decimal PL = Convert.ToDecimal(reader.GetAttribute("PL"));
+                        Decimal P  = Convert.ToDecimal(reader.GetAttribute("P"));
+                        Decimal M  = Convert.ToDecimal(reader.GetAttribute("M"));
 
-            //while (reader.Read())
-            //{
-            //    switch (reader.NodeType)
-            //    {
-            //        case XmlNodeType.Element: // The node is an Element
-            //            Console.WriteLine("Element: " + reader.Name);
-            //            while (reader.MoveToNextAttribute()) // Read attributes
-            //                Console.WriteLine("  Attribute: [" +
-            //                 reader.Name + "] = '"
-            //                   + reader.Value + "'");
-            //            break;
-            //        case XmlNodeType.DocumentType: // The node is a DocumentType
-            //            Console.WriteLine("Document: " + reader.Value);
-            //            break;
-            //        case XmlNodeType.Comment:
-            //            Console.WriteLine("Comment: " + reader.Value);
-            //            break;
-            //    }
-            //}
+                        reader.Read();
+                        Decimal range = Convert.ToDecimal(reader.Value);
+                        reader.Read();
+                        
+  
+                        //todo :  finish here
+                            
+                    }
+                    break;
+            }
         
-
-          reader.Close();
+           reader.Close();
         }
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
