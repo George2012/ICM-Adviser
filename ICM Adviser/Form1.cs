@@ -148,27 +148,30 @@ namespace ICM_Adviser
         {
            XmlTextReader reader = new XmlTextReader(i_filename);
 
-           switch (reader.NodeType)
+           while (reader.Read())
            {
-                case XmlNodeType.Element:
-                    {
-                        if (reader.Name == "Ranges")
-                        {
-                            break;
-                        }
+               switch (reader.NodeType)
+               {
+                   case XmlNodeType.Element:
+                       {
+                           if (reader.Name == "Ranges")
+                           {
+                               break;
+                           }
 
-                        int PL = Convert.ToInt32(reader.GetAttribute("PL"));
-                        int P  = Convert.ToInt32(reader.GetAttribute("P"));
-                        int M  = Convert.ToInt32(reader.GetAttribute("M"));
+                           int PL = Convert.ToInt32(reader.GetAttribute("PL"));
+                           int P = Convert.ToInt32(reader.GetAttribute("P"));
+                           int M = Convert.ToInt32(reader.GetAttribute("M"));
 
-                        reader.Read();
-                        Decimal range = Convert.ToDecimal(reader.Value);
-                        reader.Read();
+                           reader.Read();
+                           Decimal range = Convert.ToDecimal(reader.Value);
+                           reader.Read();
 
-                        Range[PL - 1, P - 1, M - 1] = range;                          
-                    }
-                    break;
-            }
+                           Range[PL - 1, P - 1, M - 1] = range;
+                       }
+                       break;
+               }
+           }
         
            reader.Close();
         }
