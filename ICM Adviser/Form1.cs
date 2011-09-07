@@ -157,9 +157,9 @@ namespace ICM_Adviser
                             break;
                         }
 
-                        Decimal PL = Convert.ToDecimal(reader.GetAttribute("PL"));
-                        Decimal P  = Convert.ToDecimal(reader.GetAttribute("P"));
-                        Decimal M  = Convert.ToDecimal(reader.GetAttribute("M"));
+                        int PL = Convert.ToInt32(reader.GetAttribute("PL"));
+                        int P  = Convert.ToInt32(reader.GetAttribute("P"));
+                        int M  = Convert.ToInt32(reader.GetAttribute("M"));
 
                         reader.Read();
                         Decimal range = Convert.ToDecimal(reader.Value);
