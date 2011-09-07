@@ -18,7 +18,7 @@ namespace ICM_Adviser
         const int MAX_M  = 10;
 
         private string m_filename = "C:\\XMLtest\\test.xml";
-        private string m_descriptionFilename = "C:\\XMLtest\\description.xml";
+        private string m_descriptionFilename = "C:\\XMLtest\\myDescription.xml";
 
         private Decimal[, ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M];
 
@@ -48,6 +48,8 @@ namespace ICM_Adviser
             InitializeComponent();
             resetRange();
             resetDescription();
+
+            openDescriptionXML(m_descriptionFilename);
         }
 
         private void buttonShow_Click(object sender, EventArgs e)
@@ -247,6 +249,7 @@ namespace ICM_Adviser
             XmlTextWriter myXmlTextWriter = new XmlTextWriter(m_descriptionFilename, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
+            myXmlTextWriter.WriteStartElement("Descriptions");
 
             foreach (KeyValuePair<Decimal, string> entry in Description)
             {
@@ -255,6 +258,8 @@ namespace ICM_Adviser
                 myXmlTextWriter.WriteString(entry.Value);
                 myXmlTextWriter.WriteEndElement();
             }
+
+            myXmlTextWriter.WriteEndElement();
 
             //Write the XML to file and close the writer
             myXmlTextWriter.Flush();
@@ -285,7 +290,9 @@ namespace ICM_Adviser
         {
             resetDescription();
 
+            //TODO:  handle file not found exception
             XmlTextReader reader = new XmlTextReader(i_filename);
+           
 
             while (reader.Read())
             {
@@ -293,12 +300,21 @@ namespace ICM_Adviser
                 {
                     case XmlNodeType.Element:
                         {
+                            if (reader.Name == "Descriptions")
+                            {
+                                break;
+                            }
+
                             Decimal Range = 0;
 
                             Range = Convert.ToDecimal(reader.GetAttribute("Value"));
-                            reader.Read();
-                            string text = reader.Value;
 
+                            bool res;
+
+                            res = reader.Read();
+                            string text = reader.Value;
+                            res = reader.Read();
+                           
                             //Remove range if already exist
                             if (Description.ContainsKey(Range))
                             {
@@ -310,6 +326,8 @@ namespace ICM_Adviser
                         break;
                 }
             }
+
+            reader.Close();
         }
     }
 }
