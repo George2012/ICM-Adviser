@@ -164,10 +164,8 @@ namespace ICM_Adviser
                         reader.Read();
                         Decimal range = Convert.ToDecimal(reader.Value);
                         reader.Read();
-                        
-  
-                        //todo :  finish here
-                            
+
+                        Range[PL - 1, P - 1, M - 1] = range;                          
                     }
                     break;
             }
