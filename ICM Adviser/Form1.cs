@@ -100,27 +100,31 @@ namespace ICM_Adviser
             myXmlTextWriter = new XmlTextWriter(m_filename, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
+            myXmlTextWriter.WriteStartElement("Ranges");
+
             for (int pl = 0; pl < MAX_PL; pl++)
             {
-                myXmlTextWriter.WriteStartElement("PL");
-                myXmlTextWriter.WriteAttributeString("Value", Convert.ToString(pl));
                 for (int p = 0; p < MAX_P; p++)
                 {
-                    myXmlTextWriter.WriteStartElement("P");
-                    myXmlTextWriter.WriteAttributeString("Value", Convert.ToString(p));
                     for (int m = 0; m < MAX_M; m++)
                     {
-                        myXmlTextWriter.WriteStartElement("M");
-                        myXmlTextWriter.WriteAttributeString("Value", Convert.ToString(m));
+                        Decimal range = Range[pl, p, m];
 
-                        myXmlTextWriter.WriteString(Range[pl, p, m].ToString());
-
-                        myXmlTextWriter.WriteEndElement();
+                        if (range != -1)
+                        {
+                            myXmlTextWriter.WriteStartElement("Range");
+                            myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl+1));
+                            myXmlTextWriter.WriteAttributeString("P", Convert.ToString(p+1));
+                            myXmlTextWriter.WriteAttributeString("M", Convert.ToString(m+1));
+                            myXmlTextWriter.WriteString(Convert.ToString(range));
+                            myXmlTextWriter.WriteEndElement();
+                        }
                     }
-                    myXmlTextWriter.WriteEndElement();
                 }
-                myXmlTextWriter.WriteEndElement();
             }
+
+
+            myXmlTextWriter.WriteEndElement();
 
             //Write the XML to file and close the writer
             myXmlTextWriter.Flush();
