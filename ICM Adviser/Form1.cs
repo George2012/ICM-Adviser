@@ -55,6 +55,7 @@ namespace ICM_Adviser
             resetRange();
             resetDescription();
 
+            openXML(m_filename);
             openDescriptionXML(m_descriptionFilename);
         }
 
@@ -68,6 +69,8 @@ namespace ICM_Adviser
 
             decimal res = Range[PL - 1, P - 1, M - 1, A ];
             this.textBoxRange.Text = res.ToString();
+
+            UpdateDescription();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -258,6 +261,11 @@ namespace ICM_Adviser
         }
 
         private void textBoxRange_TextValidated(object sender, EventArgs e)
+        {
+            UpdateDescription();
+        }
+
+        private void UpdateDescription()
         {
             Decimal range = Convert.ToDecimal(this.textBoxRange.Text);
             string text;
