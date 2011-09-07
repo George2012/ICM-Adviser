@@ -242,6 +242,8 @@ namespace ICM_Adviser
             //}
 
 
+
+            //TODO:ADD exeption handling for XmlTextWriter
             XmlTextWriter myXmlTextWriter = new XmlTextWriter(m_descriptionFilename, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
@@ -293,17 +295,9 @@ namespace ICM_Adviser
                         {
                             Decimal Range = 0;
 
-                            while (reader.MoveToNextAttribute())
-                            {
-                                if (reader.Name == "Value")
-                                {
-                                    Range = Convert.ToDecimal(reader.Value);
-                                }
-                            }
-
-                            //reader.MoveToContent();
-                            reader.MoveToElement();
-                            String text = reader.Value;
+                            Range = Convert.ToDecimal(reader.GetAttribute("Value"));
+                            reader.Read();
+                            string text = reader.Value;
 
                             //Remove range if already exist
                             if (Description.ContainsKey(Range))
