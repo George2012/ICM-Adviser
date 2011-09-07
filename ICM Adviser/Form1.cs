@@ -13,7 +13,7 @@ namespace ICM_Adviser
 {
     public partial class Form1 : Form
     {
-        enum Action { F = 0, L = 1, R = 2 }
+        enum Action : int { F = 0, L = 1, R = 2 }
 
         const int MAX_PL = 9;
         const int MAX_P  = 8;
@@ -22,8 +22,8 @@ namespace ICM_Adviser
 
         private string m_filename = "C:\\XMLtest\\test.xml";
         private string m_descriptionFilename = "C:\\XMLtest\\myDescription.xml";
-
-        private Decimal[, ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M];
+     
+        private Decimal[, , ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M, MAX_ACTION];
 
         private Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
 
@@ -33,10 +33,11 @@ namespace ICM_Adviser
         {
              for(int pl = 0 ; pl < MAX_PL ; pl++)
                 for(int p = 0 ; p < MAX_P ; p++)
-                    for (int m = 0; m < MAX_M; m++)   
-                    {
-                        Range[pl, p, m] = -1;
-                    }           
+                    for (int m = 0; m < MAX_M; m++)  
+                        for(int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R) ; a++)
+                        {
+                            Range[pl, p, m , a] = -1;
+                        }           
         }
 
         private void resetDescription()
@@ -62,7 +63,9 @@ namespace ICM_Adviser
             int P = Convert.ToInt32(this.numericUpDownP.Value);
             int M = Convert.ToInt32(this.numericUpDownM.Value);
 
-            decimal res = Range[PL - 1, P - 1, M - 1];
+            int A = Convert.ToInt32(action);
+
+            decimal res = Range[PL - 1, P - 1, M - 1, A ];
             this.textBoxRange.Text = res.ToString();
         }
 
@@ -72,9 +75,11 @@ namespace ICM_Adviser
             int P = Convert.ToInt32(this.numericUpDownP.Value);
             int M = Convert.ToInt32(this.numericUpDownM.Value);
 
+            int A = Convert.ToInt32(action);
+
             decimal res = Convert.ToDecimal(this.textBoxRange.Text);
 
-            Range[PL - 1, P - 1, M - 1] = res;
+            Range[PL - 1, P - 1, M - 1 , A ] = res;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,16 +117,36 @@ namespace ICM_Adviser
                 {
                     for (int m = 0; m < MAX_M; m++)
                     {
-                        Decimal range = Range[pl, p, m];
-
-                        if (range != -1)
+                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R); a++)
                         {
-                            myXmlTextWriter.WriteStartElement("Range");
-                            myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl+1));
-                            myXmlTextWriter.WriteAttributeString("P", Convert.ToString(p+1));
-                            myXmlTextWriter.WriteAttributeString("M", Convert.ToString(m+1));
-                            myXmlTextWriter.WriteString(Convert.ToString(range));
-                            myXmlTextWriter.WriteEndElement();
+                            Decimal range = Range[pl, p, m , a];
+
+                            if (range != -1)
+                            {
+                                myXmlTextWriter.WriteStartElement("Range");
+                                myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl + 1));
+                                myXmlTextWriter.WriteAttributeString("P", Convert.ToString(p + 1));
+                                myXmlTextWriter.WriteAttributeString("M", Convert.ToString(m + 1));
+
+                                string A ="";
+
+                                switch (a)
+                                {
+                                    case 0:
+                                        A = "F";
+                                        break;
+                                    case 1:
+                                        A = "L";
+                                        break;
+                                    case 2:
+                                        A = "R";
+                                        break;
+                                }
+
+                                myXmlTextWriter.WriteAttributeString("Action", A);
+                                myXmlTextWriter.WriteString(Convert.ToString(range));
+                                myXmlTextWriter.WriteEndElement();
+                            }
                         }
                     }
                 }
@@ -166,12 +191,28 @@ namespace ICM_Adviser
                            int PL = Convert.ToInt32(reader.GetAttribute("PL"));
                            int P = Convert.ToInt32(reader.GetAttribute("P"));
                            int M = Convert.ToInt32(reader.GetAttribute("M"));
+                           string A_str = reader.GetAttribute("Action");
+
+                           int A = 0;
+
+                           switch (A_str)
+                           {
+                               case "F":
+                                   A = 0;
+                                   break;
+                               case "L":
+                                   A = 1;
+                                   break;
+                               case "R":
+                                   A = 2;
+                                   break;
+                           }
 
                            reader.Read();
                            Decimal range = Convert.ToDecimal(reader.Value);
                            reader.Read();
 
-                           Range[PL - 1, P - 1, M - 1] = range;
+                           Range[PL - 1, P - 1, M - 1 , A] = range;
                        }
                        break;
                }
