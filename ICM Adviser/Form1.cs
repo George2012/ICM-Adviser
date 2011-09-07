@@ -13,17 +13,21 @@ namespace ICM_Adviser
 {
     public partial class Form1 : Form
     {
+        enum Action { F = 0, L = 1, R = 2 }
+
         const int MAX_PL = 9;
         const int MAX_P  = 8;
         const int MAX_M  = 10;
+        const int MAX_ACTION = 2;
 
         private string m_filename = "C:\\XMLtest\\test.xml";
         private string m_descriptionFilename = "C:\\XMLtest\\myDescription.xml";
 
         private Decimal[, ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M];
 
-        Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
+        private Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
 
+        private Action action = Action.F;
 
         private void resetRange()
         {
@@ -333,6 +337,21 @@ namespace ICM_Adviser
             }
 
             reader.Close();
+        }
+
+        private void radioButtonF_CheckedChanged(object sender, EventArgs e)
+        {
+            action = Action.F;
+        }
+
+        private void radioButtonL_CheckedChanged(object sender, EventArgs e)
+        {
+            action = Action.L;
+        }
+
+        private void radioButtonR_CheckedChanged(object sender, EventArgs e)
+        {
+            action = Action.R;
         }
     }
 }

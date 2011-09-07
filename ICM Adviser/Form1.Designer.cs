@@ -32,9 +32,9 @@
             this.labelP = new System.Windows.Forms.Label();
             this.labelM = new System.Windows.Forms.Label();
             this.numericUpDownPL = new System.Windows.Forms.NumericUpDown();
-            this.radioButtonReise = new System.Windows.Forms.RadioButton();
-            this.radioButtonFold = new System.Windows.Forms.RadioButton();
+            this.radioButtonR = new System.Windows.Forms.RadioButton();
             this.radioButtonL = new System.Windows.Forms.RadioButton();
+            this.radioButtonF = new System.Windows.Forms.RadioButton();
             this.numericUpDownP = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownM = new System.Windows.Forms.NumericUpDown();
             this.labelRange = new System.Windows.Forms.Label();
@@ -114,38 +114,34 @@
             0,
             0});
             // 
-            // radioButtonReise
+            // radioButtonR
             // 
-            this.radioButtonReise.AutoSize = true;
-            this.radioButtonReise.Location = new System.Drawing.Point(193, 30);
-            this.radioButtonReise.Name = "radioButtonReise";
-            this.radioButtonReise.Size = new System.Drawing.Size(33, 17);
-            this.radioButtonReise.TabIndex = 4;
-            this.radioButtonReise.TabStop = true;
-            this.radioButtonReise.Text = "R";
-            this.radioButtonReise.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonFold
-            // 
-            this.radioButtonFold.AutoSize = true;
-            this.radioButtonFold.Location = new System.Drawing.Point(36, 30);
-            this.radioButtonFold.Name = "radioButtonFold";
-            this.radioButtonFold.Size = new System.Drawing.Size(31, 17);
-            this.radioButtonFold.TabIndex = 5;
-            this.radioButtonFold.TabStop = true;
-            this.radioButtonFold.Text = "F";
-            this.radioButtonFold.UseVisualStyleBackColor = true;
+            this.radioButtonR.Location = new System.Drawing.Point(182, 32);
+            this.radioButtonR.Name = "radioButtonR";
+            this.radioButtonR.Size = new System.Drawing.Size(56, 24);
+            this.radioButtonR.TabIndex = 18;
+            this.radioButtonR.Text = "R";
+            this.radioButtonR.CheckedChanged += new System.EventHandler(this.radioButtonR_CheckedChanged);
             // 
             // radioButtonL
             // 
-            this.radioButtonL.AutoSize = true;
-            this.radioButtonL.Location = new System.Drawing.Point(121, 30);
+            this.radioButtonL.Location = new System.Drawing.Point(109, 32);
             this.radioButtonL.Name = "radioButtonL";
-            this.radioButtonL.Size = new System.Drawing.Size(31, 17);
-            this.radioButtonL.TabIndex = 6;
-            this.radioButtonL.TabStop = true;
+            this.radioButtonL.Size = new System.Drawing.Size(55, 24);
+            this.radioButtonL.TabIndex = 17;
             this.radioButtonL.Text = "L";
-            this.radioButtonL.UseVisualStyleBackColor = true;
+            this.radioButtonL.CheckedChanged += new System.EventHandler(this.radioButtonL_CheckedChanged);
+            // 
+            // radioButtonF
+            // 
+            this.radioButtonF.Checked = true;
+            this.radioButtonF.Location = new System.Drawing.Point(40, 32);
+            this.radioButtonF.Name = "radioButtonF";
+            this.radioButtonF.Size = new System.Drawing.Size(45, 24);
+            this.radioButtonF.TabIndex = 16;
+            this.radioButtonF.TabStop = true;
+            this.radioButtonF.Text = "F";
+            this.radioButtonF.CheckedChanged += new System.EventHandler(this.radioButtonF_CheckedChanged);
             // 
             // numericUpDownP
             // 
@@ -313,21 +309,21 @@
             // openDescriptionMenuItem
             // 
             this.openDescriptionMenuItem.Name = "openDescriptionMenuItem";
-            this.openDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openDescriptionMenuItem.Size = new System.Drawing.Size(125, 22);
             this.openDescriptionMenuItem.Text = "Open";
             this.openDescriptionMenuItem.Click += new System.EventHandler(this.openDescriptionMenuItem_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.saveAsToolStripMenuItem1.Text = "Save As...";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsDescriptionMenuItem_Click);
             // 
             // saveDescriptionMenuItem
             // 
             this.saveDescriptionMenuItem.Name = "saveDescriptionMenuItem";
-            this.saveDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveDescriptionMenuItem.Size = new System.Drawing.Size(125, 22);
             this.saveDescriptionMenuItem.Text = "Save";
             this.saveDescriptionMenuItem.Click += new System.EventHandler(this.saveDescriptionMenuItem_Click);
             // 
@@ -362,9 +358,9 @@
             this.Controls.Add(this.labelRange);
             this.Controls.Add(this.numericUpDownM);
             this.Controls.Add(this.numericUpDownP);
+            this.Controls.Add(this.radioButtonF);
             this.Controls.Add(this.radioButtonL);
-            this.Controls.Add(this.radioButtonFold);
-            this.Controls.Add(this.radioButtonReise);
+            this.Controls.Add(this.radioButtonR);
             this.Controls.Add(this.numericUpDownPL);
             this.Controls.Add(this.labelM);
             this.Controls.Add(this.labelP);
@@ -389,9 +385,9 @@
         private System.Windows.Forms.Label labelP;
         private System.Windows.Forms.Label labelM;
         private System.Windows.Forms.NumericUpDown numericUpDownPL;
-        private System.Windows.Forms.RadioButton radioButtonReise;
-        private System.Windows.Forms.RadioButton radioButtonFold;
+        private System.Windows.Forms.RadioButton radioButtonR;
         private System.Windows.Forms.RadioButton radioButtonL;
+        private System.Windows.Forms.RadioButton radioButtonF;
         private System.Windows.Forms.NumericUpDown numericUpDownP;
         private System.Windows.Forms.NumericUpDown numericUpDownM;
         private System.Windows.Forms.Label labelRange;
