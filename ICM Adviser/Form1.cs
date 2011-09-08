@@ -468,5 +468,24 @@ namespace ICM_Adviser
         {
 
         }
+
+        private void chipEVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO:  think of somethin better then 7
+            this.listBoxPL.SelectedIndex = 7;
+            this.listBoxPL.Visible = false;
+            this.labelPL.Visible = false;
+            this.chipEVToolStripMenuItem.Checked = true;
+            this.iCMToolStripMenuItem.Checked    = false;
+        }
+
+        private void iCMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.listBoxPL.SelectedIndex = 0;
+            this.listBoxPL.Visible = true;
+            this.labelPL.Visible = true;
+            this.chipEVToolStripMenuItem.Checked = false;
+            this.iCMToolStripMenuItem.Checked = true;
+        }
     }
 }
