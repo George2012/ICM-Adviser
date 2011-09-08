@@ -21,9 +21,15 @@ namespace ICM_Adviser
         const int MAX_M  = 10 + 1;    // 1 to 10 
         const int MAX_ACTION = 2;
 
-        private string m_filename = "C:\\XMLtest\\Ranges.xml";
-        private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
-     
+       // private string m_ICM_Filename = "C:\\XMLtest\\Ranges.xml";
+       // private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
+
+        private string m_ICM_Filename           = "ICM_Ranges.xml";
+        private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
+        private string m_descriptionFilename    = "Descriptions.xml";
+
+        //private string m_RangeFileName;
+
         private Decimal[, , ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M, MAX_ACTION];
 
         private Dictionary<Decimal, string> Description = new Dictionary<Decimal, string>();
@@ -54,10 +60,13 @@ namespace ICM_Adviser
         public Form1()
         {
             InitializeComponent();
-            resetRange();
-            resetDescription();
 
-            openXML(m_filename);
+            //m_RangeFileName = m_ICM_Filename;
+            //openXML(m_RangeFileName);
+
+            switchToICMMode();
+            //switchToChipEVMode();
+
             openDescriptionXML(m_descriptionFilename);
 
             listBoxPL.SelectedIndex = 0;
@@ -111,7 +120,7 @@ namespace ICM_Adviser
             if (dlgValue == DialogResult.OK)
             {
                 // save
-                m_filename = saveFileDialog1.FileName;
+                m_ICM_Filename = saveFileDialog1.FileName;
                 saveXML();
             }        
         }
@@ -127,9 +136,9 @@ namespace ICM_Adviser
 
             //Delete existing XML before writing 
             //becouse elsewhere file doesn't updated
-            File.Delete(m_filename);
+            File.Delete(m_ICM_Filename);
 
-            myXmlTextWriter = new XmlTextWriter(m_filename, null);
+            myXmlTextWriter = new XmlTextWriter(m_ICM_Filename, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
             myXmlTextWriter.WriteStartElement("Ranges");
@@ -147,9 +156,9 @@ namespace ICM_Adviser
                             if (range != -1)
                             {
                                 myXmlTextWriter.WriteStartElement("Range");
-                                myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl + 1));
-                                myXmlTextWriter.WriteAttributeString("P", Convert.ToString(p + 1));
-                                myXmlTextWriter.WriteAttributeString("M", Convert.ToString(m + 1));
+                                myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl));
+                                myXmlTextWriter.WriteAttributeString("P",  Convert.ToString(p));
+                                myXmlTextWriter.WriteAttributeString("M",  Convert.ToString(m));
 
                                 string A ="";
 
@@ -198,6 +207,8 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
+           resetRange();
+
            XmlTextReader reader = new XmlTextReader(i_filename);
 
            while (reader.Read())
@@ -235,6 +246,7 @@ namespace ICM_Adviser
                            Decimal range = Convert.ToDecimal(reader.Value);
                            reader.Read();
 
+                           //TODO handle invalid index exception
                            Range[PL , P , M  , A] = range;
                        }
                        break;
@@ -471,21 +483,35 @@ namespace ICM_Adviser
 
         private void chipEVToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            switchToChipEVMode();
+        }
+
+        private void switchToChipEVMode()
+        {
             //TODO:  think of somethin better then 7
             this.listBoxPL.SelectedIndex = 7;
             this.listBoxPL.Visible = false;
             this.labelPL.Visible = false;
             this.chipEVToolStripMenuItem.Checked = true;
-            this.iCMToolStripMenuItem.Checked    = false;
+            this.iCMToolStripMenuItem.Checked = false;
+ 
+            openXML(m_ChipEV_Filename);
         }
 
         private void iCMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            switchToICMMode();
+        }
+
+        private void switchToICMMode()
         {
             this.listBoxPL.SelectedIndex = 0;
             this.listBoxPL.Visible = true;
             this.labelPL.Visible = true;
             this.chipEVToolStripMenuItem.Checked = false;
             this.iCMToolStripMenuItem.Checked = true;
+
+            openXML(m_ICM_Filename);
         }
     }
 }
