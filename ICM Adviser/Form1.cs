@@ -74,6 +74,8 @@ namespace ICM_Adviser
             listBoxM.SelectedIndex  = 0;
 
             m_isInitialized = true;
+
+            updateData();
         }
 
         private void buttonShow_Click(object sender, EventArgs e)
@@ -98,20 +100,20 @@ namespace ICM_Adviser
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            //int PL = Convert.ToInt32(this.numericUpDownPL.Value);
-            //int P = Convert.ToInt32(this.numericUpDownP.Value);
-            //int M = Convert.ToInt32(this.numericUpDownM.Value);
+            SaveRange();
+        }
 
-
+        private void SaveRange()
+        {
             int PL = Convert.ToInt32(listBoxPL.SelectedItem);
-            int P  = Convert.ToInt32(listBoxP.SelectedItem);
-            int M  = Convert.ToInt32(listBoxM.SelectedItem);
+            int P = Convert.ToInt32(listBoxP.SelectedItem);
+            int M = Convert.ToInt32(listBoxM.SelectedItem);
 
             int A = Convert.ToInt32(action);
 
             decimal res = Convert.ToDecimal(this.textBoxRange.Text);
 
-            Range[PL , P , M  , A ] = res;
+            Range[PL, P, M, A] = res;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,6 +213,11 @@ namespace ICM_Adviser
 
            XmlTextReader reader = new XmlTextReader(i_filename);
 
+
+           //TODO:
+
+            // handle XML in wrong format
+
            while (reader.Read())
            {
                switch (reader.NodeType)
@@ -278,8 +285,13 @@ namespace ICM_Adviser
 
         private void buttonDescription_Click(object sender, EventArgs e)
         {
+            save_description();
+        }
+
+        private void save_description()
+        {
             Decimal Range = Convert.ToDecimal(this.textBoxRange.Text);
-            string  text = textBoxDescription.Text;
+            string text = textBoxDescription.Text;
 
             //Remove range if already exist
             if (Description.ContainsKey(Range))
@@ -297,6 +309,7 @@ namespace ICM_Adviser
 
         private void textBoxRange_TextValidated(object sender, EventArgs e)
         {
+            SaveRange();
             UpdateDescription();
         }
 
@@ -386,8 +399,9 @@ namespace ICM_Adviser
 
             //TODO:  handle file not found exception
             XmlTextReader reader = new XmlTextReader(i_filename);
-           
 
+            //TODO:
+            // handle XML in wrong format
             while (reader.Read())
             {
                 switch (reader.NodeType)
@@ -512,6 +526,11 @@ namespace ICM_Adviser
             this.iCMToolStripMenuItem.Checked = true;
 
             openXML(m_ICM_Filename);
+        }
+
+        private void textBoxDescription_Validated(object sender, EventArgs e)
+        {
+            save_description();
         }
     }
 }

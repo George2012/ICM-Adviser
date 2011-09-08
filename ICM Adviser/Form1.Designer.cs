@@ -44,12 +44,15 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.descriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDescriptionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDescriptionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chipModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iCMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chipEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.buttonDescription = new System.Windows.Forms.Button();
@@ -58,9 +61,6 @@
             this.listBoxPL = new System.Windows.Forms.ListBox();
             this.listBoxP = new System.Windows.Forms.ListBox();
             this.listBoxM = new System.Windows.Forms.ListBox();
-            this.chipModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iCMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chipEVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,6 +156,7 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(198, 83);
             this.textBoxDescription.TabIndex = 13;
+            this.textBoxDescription.Validated += new System.EventHandler(this.textBoxDescription_Validated);
             // 
             // menuStrip1
             // 
@@ -208,23 +209,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
-            // modeToolStripMenuItem
-            // 
-            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editModeToolStripMenuItem});
-            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.modeToolStripMenuItem.Text = "Mode";
-            // 
-            // editModeToolStripMenuItem
-            // 
-            this.editModeToolStripMenuItem.Checked = true;
-            this.editModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.editModeToolStripMenuItem.Name = "editModeToolStripMenuItem";
-            this.editModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editModeToolStripMenuItem.Text = "Edit Mode";
-            this.editModeToolStripMenuItem.Click += new System.EventHandler(this.editModeToolStripMenuItem_Click);
-            // 
             // descriptionToolStripMenuItem
             // 
             this.descriptionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -238,23 +222,65 @@
             // openDescriptionMenuItem
             // 
             this.openDescriptionMenuItem.Name = "openDescriptionMenuItem";
-            this.openDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openDescriptionMenuItem.Size = new System.Drawing.Size(125, 22);
             this.openDescriptionMenuItem.Text = "Open";
             this.openDescriptionMenuItem.Click += new System.EventHandler(this.openDescriptionMenuItem_Click);
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.saveAsToolStripMenuItem1.Text = "Save As...";
             this.saveAsToolStripMenuItem1.Click += new System.EventHandler(this.saveAsDescriptionMenuItem_Click);
             // 
             // saveDescriptionMenuItem
             // 
             this.saveDescriptionMenuItem.Name = "saveDescriptionMenuItem";
-            this.saveDescriptionMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveDescriptionMenuItem.Size = new System.Drawing.Size(125, 22);
             this.saveDescriptionMenuItem.Text = "Save";
             this.saveDescriptionMenuItem.Click += new System.EventHandler(this.saveDescriptionMenuItem_Click);
+            // 
+            // chipModelToolStripMenuItem
+            // 
+            this.chipModelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iCMToolStripMenuItem,
+            this.chipEVToolStripMenuItem});
+            this.chipModelToolStripMenuItem.Name = "chipModelToolStripMenuItem";
+            this.chipModelToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.chipModelToolStripMenuItem.Text = "Chip Model";
+            // 
+            // iCMToolStripMenuItem
+            // 
+            this.iCMToolStripMenuItem.Checked = true;
+            this.iCMToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.iCMToolStripMenuItem.Name = "iCMToolStripMenuItem";
+            this.iCMToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.iCMToolStripMenuItem.Text = "ICM";
+            this.iCMToolStripMenuItem.Click += new System.EventHandler(this.iCMToolStripMenuItem_Click);
+            // 
+            // chipEVToolStripMenuItem
+            // 
+            this.chipEVToolStripMenuItem.Name = "chipEVToolStripMenuItem";
+            this.chipEVToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.chipEVToolStripMenuItem.Text = "Chip EV";
+            this.chipEVToolStripMenuItem.Click += new System.EventHandler(this.chipEVToolStripMenuItem_Click);
+            // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editModeToolStripMenuItem});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.modeToolStripMenuItem.Text = "Mode";
+            // 
+            // editModeToolStripMenuItem
+            // 
+            this.editModeToolStripMenuItem.Checked = true;
+            this.editModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.editModeToolStripMenuItem.Name = "editModeToolStripMenuItem";
+            this.editModeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.editModeToolStripMenuItem.Text = "Edit Mode";
+            this.editModeToolStripMenuItem.Click += new System.EventHandler(this.editModeToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -332,31 +358,6 @@
             this.listBoxM.Size = new System.Drawing.Size(25, 134);
             this.listBoxM.TabIndex = 21;
             this.listBoxM.SelectedIndexChanged += new System.EventHandler(this.listBoxM_SelectedIndexChanged);
-            // 
-            // chipModelToolStripMenuItem
-            // 
-            this.chipModelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iCMToolStripMenuItem,
-            this.chipEVToolStripMenuItem});
-            this.chipModelToolStripMenuItem.Name = "chipModelToolStripMenuItem";
-            this.chipModelToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.chipModelToolStripMenuItem.Text = "Chip Model";
-            // 
-            // iCMToolStripMenuItem
-            // 
-            this.iCMToolStripMenuItem.Checked = true;
-            this.iCMToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.iCMToolStripMenuItem.Name = "iCMToolStripMenuItem";
-            this.iCMToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.iCMToolStripMenuItem.Text = "ICM";
-            this.iCMToolStripMenuItem.Click += new System.EventHandler(this.iCMToolStripMenuItem_Click);
-            // 
-            // chipEVToolStripMenuItem
-            // 
-            this.chipEVToolStripMenuItem.Name = "chipEVToolStripMenuItem";
-            this.chipEVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.chipEVToolStripMenuItem.Text = "Chip EV";
-            this.chipEVToolStripMenuItem.Click += new System.EventHandler(this.chipEVToolStripMenuItem_Click);
             // 
             // Form1
             // 
