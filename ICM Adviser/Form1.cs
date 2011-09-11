@@ -19,14 +19,17 @@ namespace ICM_Adviser
         const int MAX_PL = 9  + 1;     // 2 to 9
         const int MAX_P  = 8  + 1; // 0 to 8
         const int MAX_M  = 10 + 1;    // 1 to 10 
-        const int MAX_ACTION = 2;
+        const int MAX_ACTION = 2  + 1;
 
        // private string m_ICM_Filename = "C:\\XMLtest\\Ranges.xml";
        // private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
 
         private string m_ICM_Filename           = "ICM_Ranges.xml";
-        private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
-        private string m_descriptionFilename    = "Descriptions.xml";
+      //  private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
+      //  private string m_descriptionFilename    = "Descriptions.xml";
+
+        private string m_ChipEV_Filename = "A1exeypro_turbo_sng180_ranges.xml";
+        private string m_descriptionFilename = "A1exeypro_turbo_sng180_descriptions.xml";
 
         //private string m_RangeFileName;
 
@@ -51,10 +54,7 @@ namespace ICM_Adviser
 
         private void resetDescription()
         {
-            foreach (KeyValuePair<Decimal, string> entry in Description)
-            {
-                Description.Remove(entry.Key);
-            }
+            Description.Clear();
         }
 
         public Form1()
@@ -64,8 +64,10 @@ namespace ICM_Adviser
             //m_RangeFileName = m_ICM_Filename;
             //openXML(m_RangeFileName);
 
-            switchToICMMode();
-            //switchToChipEVMode();
+            //switchToICMMode();
+            switchToChipEVMode();
+
+            changeEditMode(false);
 
             openDescriptionXML(m_descriptionFilename);
 
@@ -265,22 +267,46 @@ namespace ICM_Adviser
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.editModeToolStripMenuItem.Checked == true)
-            {
-                this.editModeToolStripMenuItem.Checked = false;
-                this.textBoxRange.ReadOnly       = true;
-                this.textBoxDescription.ReadOnly = true;
-                this.buttonSave.Visible = false;
-                this.buttonDescription.Visible = false;
-            }
-            else
+            changeEditMode(!this.editModeToolStripMenuItem.Checked);
+
+            //if (this.editModeToolStripMenuItem.Checked == true)
+            //{
+            //    this.editModeToolStripMenuItem.Checked = false;
+            //    this.textBoxRange.ReadOnly       = true;
+            //    this.textBoxDescription.ReadOnly = true;
+            //    this.buttonSave.Visible = false;
+            //    this.buttonDescription.Visible = false;
+            //}
+            //else
+            //{
+            //    this.editModeToolStripMenuItem.Checked = true;
+            //    this.textBoxRange.ReadOnly       = false;
+            //    this.textBoxDescription.ReadOnly = false;
+            //    this.buttonSave.Visible = true;
+            //    this.buttonDescription.Visible = true;
+            //}
+        }
+
+        private void changeEditMode(bool i_state)
+        {
+            if (i_state == true)
             {
                 this.editModeToolStripMenuItem.Checked = true;
-                this.textBoxRange.ReadOnly       = false;
+                this.textBoxRange.ReadOnly = false;
                 this.textBoxDescription.ReadOnly = false;
                 this.buttonSave.Visible = true;
                 this.buttonDescription.Visible = true;
             }
+            else
+            {
+                this.editModeToolStripMenuItem.Checked = false;
+                this.textBoxRange.ReadOnly = true;
+                this.textBoxDescription.ReadOnly = true;
+                this.buttonSave.Visible = false;
+                this.buttonDescription.Visible = false;
+            }
+
+          //  this.textBoxDescription.ForeColor = Color.White;
         }
 
         private void buttonDescription_Click(object sender, EventArgs e)
@@ -460,6 +486,8 @@ namespace ICM_Adviser
 
         private void radioButtonR_CheckedChanged(object sender, EventArgs e)
         {
+            action = Action.R;
+
             if (action == Action.R)
             {
                 updateData();
@@ -531,6 +559,12 @@ namespace ICM_Adviser
         private void textBoxDescription_Validated(object sender, EventArgs e)
         {
             save_description();
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetRange();
+            resetDescription();
         }
     }
 }
