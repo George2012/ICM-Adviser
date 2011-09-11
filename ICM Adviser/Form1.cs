@@ -566,5 +566,10 @@ namespace ICM_Adviser
             resetRange();
             resetDescription();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
