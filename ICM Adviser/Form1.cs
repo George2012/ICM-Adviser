@@ -24,12 +24,12 @@ namespace ICM_Adviser
        // private string m_ICM_Filename = "C:\\XMLtest\\Ranges.xml";
        // private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
 
-        private string m_ICM_Filename           = "ICM_Ranges.xml";
+        private string m_ICM_Filename ;         
       //  private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
       //  private string m_descriptionFilename    = "Descriptions.xml";
 
-        private string m_ChipEV_Filename = "A1exeypro_turbo_sng180_ranges.xml";
-        private string m_descriptionFilename = "A1exeypro_turbo_sng180_descriptions.xml";
+        private string m_ChipEV_Filename; 
+        private string m_descriptionFilename;
 
         //private string m_RangeFileName;
 
@@ -61,8 +61,7 @@ namespace ICM_Adviser
         {
             InitializeComponent();
 
-            //m_RangeFileName = m_ICM_Filename;
-            //openXML(m_RangeFileName);
+            ReadConfiguration();
 
             //switchToICMMode();
             switchToChipEVMode();
@@ -574,6 +573,18 @@ namespace ICM_Adviser
 
         private void ReadConfiguration()
         {
+             XmlDocument xml = new XmlDocument();
+
+             xml.Load("Configuration.xml");
+             XmlNodeList xnList = xml.SelectNodes("/CONF");
+
+             foreach (XmlNode xn in xnList)
+             {
+                 m_ICM_Filename         = xn["ICM"].InnerText;
+                 m_ChipEV_Filename      = xn["CHIPEV"].InnerText;
+                 m_descriptionFilename  = xn["DESC"].InnerText;
+             }
+
         }
     }
 }
