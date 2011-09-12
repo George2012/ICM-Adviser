@@ -571,5 +571,9 @@ namespace ICM_Adviser
         {
 
         }
+
+        private void ReadConfiguration()
+        {
+        }
     }
 }
