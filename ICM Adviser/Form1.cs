@@ -584,7 +584,6 @@ namespace ICM_Adviser
                  m_ChipEV_Filename      = xn["CHIPEV"].InnerText;
                  m_descriptionFilename  = xn["DESC"].InnerText;
              }
-
         }
     }
 }
