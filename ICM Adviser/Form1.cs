@@ -349,6 +349,11 @@ namespace ICM_Adviser
 
         private void UpdateDescription()
         {
+            if (disableDecsriptionUpdateToolStripMenuItem.Checked == true)
+            {
+                return;
+            }
+
             Decimal range = Convert.ToDecimal(this.textBoxRange.Text);
             string text;
 
@@ -677,6 +682,18 @@ namespace ICM_Adviser
                 fsOut.Close();
                 cs.Close();
                 fsCrypt.Close();
+            }
+        }
+
+        private void disableDecsriptionUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(disableDecsriptionUpdateToolStripMenuItem.Checked == true)
+            {
+                disableDecsriptionUpdateToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                disableDecsriptionUpdateToolStripMenuItem.Checked = true;
             }
         }
     }
