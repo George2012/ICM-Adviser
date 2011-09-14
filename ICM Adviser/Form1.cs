@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace ICM_Adviser
 {
@@ -16,20 +17,19 @@ namespace ICM_Adviser
         enum Action : int { F = 0, L = 1, R = 2 }
 
         //2160 permutations
-        const int MAX_PL = 9  + 1;     // 2 to 9
-        const int MAX_P  = 8  + 1; // 0 to 8
-        const int MAX_M  = 10 + 1;    // 1 to 10 
-        const int MAX_ACTION = 2  + 1;
+        const int MAX_PL = 9 + 1;     // 2 to 9
+        const int MAX_P = 8 + 1; // 0 to 8
+        const int MAX_M = 10 + 1;    // 1 to 10 
+        const int MAX_ACTION = 2 + 1;
 
-       // private string m_ICM_Filename = "C:\\XMLtest\\Ranges.xml";
-       // private string m_descriptionFilename = "C:\\XMLtest\\Descriptions.xml";
+        private string m_ICM_Filename;
+        //  private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
+        //  private string m_descriptionFilename    = "Descriptions.xml";
 
-        private string m_ICM_Filename ;         
-      //  private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
-      //  private string m_descriptionFilename    = "Descriptions.xml";
-
-        private string m_ChipEV_Filename; 
+        private string m_ChipEV_Filename;
         private string m_descriptionFilename;
+
+        private string m_save_file = "";
 
         //private string m_RangeFileName;
 
@@ -43,13 +43,13 @@ namespace ICM_Adviser
 
         private void resetRange()
         {
-             for(int pl = 0 ; pl < MAX_PL ; pl++)
-                for(int p = 0 ; p < MAX_P ; p++)
-                    for (int m = 0; m < MAX_M; m++)  
-                        for(int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R) ; a++)
+            for (int pl = 0; pl < MAX_PL; pl++)
+                for (int p = 0; p < MAX_P; p++)
+                    for (int m = 0; m < MAX_M; m++)
+                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R); a++)
                         {
-                            Range[pl, p, m , a] = -1;
-                        }           
+                            Range[pl, p, m, a] = -1;
+                        }
         }
 
         private void resetDescription()
@@ -71,8 +71,8 @@ namespace ICM_Adviser
             openDescriptionXML(m_descriptionFilename);
 
             listBoxPL.SelectedIndex = 0;
-            listBoxP.SelectedIndex  = 0;
-            listBoxM.SelectedIndex  = 0;
+            listBoxP.SelectedIndex = 0;
+            listBoxM.SelectedIndex = 0;
 
             m_isInitialized = true;
 
@@ -92,7 +92,7 @@ namespace ICM_Adviser
 
             int A = Convert.ToInt32(action);
 
-            decimal res = Range[PL , P , M , A];
+            decimal res = Range[PL, P, M, A];
             this.textBoxRange.Text = res.ToString();
 
             UpdateDescription();
@@ -123,9 +123,9 @@ namespace ICM_Adviser
             if (dlgValue == DialogResult.OK)
             {
                 // save
-                m_ICM_Filename = saveFileDialog1.FileName;
+                m_save_file = saveFileDialog1.FileName;
                 saveXML();
-            }        
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,15 +133,15 @@ namespace ICM_Adviser
             saveXML();
         }
 
-        private  void saveXML()
+        private void saveXML()
         {
             XmlTextWriter myXmlTextWriter = null;
 
             //Delete existing XML before writing 
             //becouse elsewhere file doesn't updated
-            File.Delete(m_ICM_Filename);
+            File.Delete(m_save_file);
 
-            myXmlTextWriter = new XmlTextWriter(m_ICM_Filename, null);
+            myXmlTextWriter = new XmlTextWriter(m_save_file, null);
             myXmlTextWriter.Formatting = Formatting.Indented;
 
             myXmlTextWriter.WriteStartElement("Ranges");
@@ -154,16 +154,16 @@ namespace ICM_Adviser
                     {
                         for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R); a++)
                         {
-                            Decimal range = Range[pl, p, m , a];
+                            Decimal range = Range[pl, p, m, a];
 
                             if (range != -1)
                             {
                                 myXmlTextWriter.WriteStartElement("Range");
                                 myXmlTextWriter.WriteAttributeString("PL", Convert.ToString(pl));
-                                myXmlTextWriter.WriteAttributeString("P",  Convert.ToString(p));
-                                myXmlTextWriter.WriteAttributeString("M",  Convert.ToString(m));
+                                myXmlTextWriter.WriteAttributeString("P", Convert.ToString(p));
+                                myXmlTextWriter.WriteAttributeString("M", Convert.ToString(m));
 
-                                string A ="";
+                                string A = "";
 
                                 switch (a)
                                 {
@@ -195,6 +195,8 @@ namespace ICM_Adviser
             myXmlTextWriter.Close();
             if (myXmlTextWriter != null)
                 myXmlTextWriter.Close();
+
+            //EncryptFile(m)
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -210,89 +212,72 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
-           resetRange();
+            resetRange();
 
-           XmlTextReader reader;
+            XmlTextReader reader;
 
-           try
-           {
-               reader = new XmlTextReader(i_filename);
-           }
-           catch
-           {
-               MessageBox.Show("Failed to read ranges file!", "error");
-               return;
-           }
+            try
+            {
+                reader = new XmlTextReader(i_filename);
+            }
+            catch
+            {
+                MessageBox.Show("Failed to read ranges file!", "error");
+                return;
+            }
 
 
-           //TODO:
-           //handle XML in wrong format
+            //TODO:
+            //handle XML in wrong format
 
-           while (reader.Read())
-           {
-               switch (reader.NodeType)
-               {
-                   case XmlNodeType.Element:
-                       {
-                           if (reader.Name == "Ranges")
-                           {
-                               break;
-                           }
+            while (reader.Read())
+            {
+                switch (reader.NodeType)
+                {
+                    case XmlNodeType.Element:
+                        {
+                            if (reader.Name == "Ranges")
+                            {
+                                break;
+                            }
 
-                           int PL = Convert.ToInt32(reader.GetAttribute("PL"));
-                           int P = Convert.ToInt32(reader.GetAttribute("P"));
-                           int M = Convert.ToInt32(reader.GetAttribute("M"));
-                           string A_str = reader.GetAttribute("Action");
+                            int PL = Convert.ToInt32(reader.GetAttribute("PL"));
+                            int P = Convert.ToInt32(reader.GetAttribute("P"));
+                            int M = Convert.ToInt32(reader.GetAttribute("M"));
+                            string A_str = reader.GetAttribute("Action");
 
-                           int A = 0;
+                            int A = 0;
 
-                           switch (A_str)
-                           {
-                               case "F":
-                                   A = 0;
-                                   break;
-                               case "L":
-                                   A = 1;
-                                   break;
-                               case "R":
-                                   A = 2;
-                                   break;
-                           }
+                            switch (A_str)
+                            {
+                                case "F":
+                                    A = 0;
+                                    break;
+                                case "L":
+                                    A = 1;
+                                    break;
+                                case "R":
+                                    A = 2;
+                                    break;
+                            }
 
-                           reader.Read();
-                           Decimal range = Convert.ToDecimal(reader.Value);
-                           reader.Read();
+                            reader.Read();
+                            Decimal range = Convert.ToDecimal(reader.Value);
+                            reader.Read();
 
-                           //TODO handle invalid index exception
-                           Range[PL , P , M  , A] = range;
-                       }
-                       break;
-               }
-           }
-        
-           reader.Close();
+                            //TODO handle invalid index exception
+                            Range[PL, P, M, A] = range;
+                        }
+                        break;
+                }
+            }
+
+            reader.Close();
         }
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             changeEditMode(!this.editModeToolStripMenuItem.Checked);
-
-            //if (this.editModeToolStripMenuItem.Checked == true)
-            //{
-            //    this.editModeToolStripMenuItem.Checked = false;
-            //    this.textBoxRange.ReadOnly       = true;
-            //    this.textBoxDescription.ReadOnly = true;
-            //    this.buttonSave.Visible = false;
-            //    this.buttonDescription.Visible = false;
-            //}
-            //else
-            //{
-            //    this.editModeToolStripMenuItem.Checked = true;
-            //    this.textBoxRange.ReadOnly       = false;
-            //    this.textBoxDescription.ReadOnly = false;
-            //    this.buttonSave.Visible = true;
-            //    this.buttonDescription.Visible = true;
-            //}
         }
 
         private void changeEditMode(bool i_state)
@@ -314,7 +299,7 @@ namespace ICM_Adviser
                 this.buttonDescription.Visible = false;
             }
 
-          //  this.textBoxDescription.ForeColor = Color.White;
+            //  this.textBoxDescription.ForeColor = Color.White;
         }
 
         private void buttonDescription_Click(object sender, EventArgs e)
@@ -383,8 +368,6 @@ namespace ICM_Adviser
             //{
             //    // do something with entry.Value or entry.Key
             //}
-
-
 
             //TODO:ADD exeption handling for XmlTextWriter
             XmlTextWriter myXmlTextWriter = new XmlTextWriter(m_descriptionFilename, null);
@@ -464,7 +447,7 @@ namespace ICM_Adviser
                             res = reader.Read();
                             string text = reader.Value;
                             res = reader.Read();
-                           
+
                             //Remove range if already exist
                             if (Description.ContainsKey(Range))
                             {
@@ -512,25 +495,25 @@ namespace ICM_Adviser
 
         private void listBoxPL_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(m_isInitialized == true)
+            if (m_isInitialized == true)
             {
-                 updateData();
+                updateData();
             }
         }
 
         private void listBoxP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(m_isInitialized == true)
+            if (m_isInitialized == true)
             {
-                 updateData();
+                updateData();
             }
         }
 
         private void listBoxM_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(m_isInitialized == true)
+            if (m_isInitialized == true)
             {
-                 updateData();
+                updateData();
             }
         }
 
@@ -552,8 +535,12 @@ namespace ICM_Adviser
             this.labelPL.Visible = false;
             this.chipEVToolStripMenuItem.Checked = true;
             this.iCMToolStripMenuItem.Checked = false;
- 
+
             openXML(m_ChipEV_Filename);
+
+            m_save_file = m_ChipEV_Filename;
+
+            updateData();
         }
 
         private void iCMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -570,6 +557,10 @@ namespace ICM_Adviser
             this.iCMToolStripMenuItem.Checked = true;
 
             openXML(m_ICM_Filename);
+
+            m_save_file = m_ICM_Filename;
+
+            updateData();
         }
 
         private void textBoxDescription_Validated(object sender, EventArgs e)
@@ -590,25 +581,59 @@ namespace ICM_Adviser
 
         private void ReadConfiguration()
         {
-             XmlDocument xml = new XmlDocument();
+            XmlDocument xml = new XmlDocument();
 
-             try
-             {
-                 xml.Load("Configuration.xml");
-             }
-             catch
-             {  
-                 MessageBox.Show("Failed to read configuration","Error");
-                 return;
-             }
-             XmlNodeList xnList = xml.SelectNodes("/CONF");
-            
-             foreach (XmlNode xn in xnList)
-             {
-                 m_ICM_Filename         = xn["ICM"].InnerText;
-                 m_ChipEV_Filename      = xn["CHIPEV"].InnerText;
-                 m_descriptionFilename  = xn["DESC"].InnerText;
-             }
+            try
+            {
+                xml.Load("Configuration.xml");
+            }
+            catch
+            {
+                MessageBox.Show("Failed to read configuration", "Error");
+                return;
+            }
+            XmlNodeList xnList = xml.SelectNodes("/CONF");
+
+            foreach (XmlNode xn in xnList)
+            {
+                m_ICM_Filename = xn["ICM"].InnerText;
+                m_ChipEV_Filename = xn["CHIPEV"].InnerText;
+                m_descriptionFilename = xn["DESC"].InnerText;
+            }
+        }
+
+        private void EncryptFile(string inputFile, string outputFile)
+        {
+            try
+            {
+                string password = @"myKey123"; // Your Key Here
+                UnicodeEncoding UE = new UnicodeEncoding();
+                byte[] key = UE.GetBytes(password);
+
+                string cryptFile = outputFile;
+                FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                CryptoStream cs = new CryptoStream(fsCrypt,
+                    RMCrypto.CreateEncryptor(key, key),
+                    CryptoStreamMode.Write);
+
+                FileStream fsIn = new FileStream(inputFile, FileMode.Open);
+
+                int data;
+                while ((data = fsIn.ReadByte()) != -1)
+                    cs.WriteByte((byte)data);
+
+
+                fsIn.Close();
+                cs.Close();
+                fsCrypt.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Encryption failed!", "Error");
+            }
         }
     }
 }
