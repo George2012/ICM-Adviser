@@ -196,7 +196,8 @@ namespace ICM_Adviser
             if (myXmlTextWriter != null)
                 myXmlTextWriter.Close();
 
-            //EncryptFile(m)
+
+            EncryptFile(m_save_file, "E" + m_save_file);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -606,7 +607,7 @@ namespace ICM_Adviser
         {
             try
             {
-                string password = @"myKey123"; // Your Key Here
+                string password = @"George"; // Your Key Here
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
 
@@ -633,6 +634,35 @@ namespace ICM_Adviser
             catch
             {
                 MessageBox.Show("Encryption failed!", "Error");
+            }
+        }
+
+        private void DecryptFile(string inputFile, string outputFile)
+        {
+
+            {
+                string password = @"GEORGE"; // Your Key Here
+
+                UnicodeEncoding UE = new UnicodeEncoding();
+                byte[] key = UE.GetBytes(password);
+
+                FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                CryptoStream cs = new CryptoStream(fsCrypt,
+                    RMCrypto.CreateDecryptor(key, key),
+                    CryptoStreamMode.Read);
+
+                FileStream fsOut = new FileStream(outputFile, FileMode.Create);
+
+                int data;
+                while ((data = cs.ReadByte()) != -1)
+                    fsOut.WriteByte((byte)data);
+
+                fsOut.Close();
+                cs.Close();
+                fsCrypt.Close();
             }
         }
     }
