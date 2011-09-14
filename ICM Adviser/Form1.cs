@@ -217,17 +217,26 @@ namespace ICM_Adviser
 
             XmlTextReader reader;
 
-            try
+            if (File.Exists(i_filename))
             {
                 reader = new XmlTextReader(i_filename);
             }
-            catch
+            else
             {
-                MessageBox.Show("Failed to read ranges file!", "error");
-                return;
+                //Try to read Encrypted File
+                if(File.Exists("E" + i_filename))
+                {
+                    DecryptFile("E" + i_filename, "D" + i_filename);
+                    reader = new XmlTextReader("D" + i_filename);
+                }
+                else
+                {
+                   
+                    MessageBox.Show("Failed to read ranges file!", "error");
+                    return;
+                }
             }
-
-
+      
             //TODO:
             //handle XML in wrong format
 
@@ -274,6 +283,11 @@ namespace ICM_Adviser
             }
 
             reader.Close();
+
+            if (File.Exists("D" + i_filename))
+            {
+                File.Delete("D" + i_filename);
+            }
         }
 
         private void editModeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -607,7 +621,7 @@ namespace ICM_Adviser
         {
             try
             {
-                string password = @"George"; // Your Key Here
+                string password = @"myKey123"; // Your Key Here
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
 
@@ -641,7 +655,7 @@ namespace ICM_Adviser
         {
 
             {
-                string password = @"GEORGE"; // Your Key Here
+                string password = @"myKey123"; // Your Key Here
 
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
