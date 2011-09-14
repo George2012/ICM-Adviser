@@ -212,12 +212,21 @@ namespace ICM_Adviser
         {
            resetRange();
 
-           XmlTextReader reader = new XmlTextReader(i_filename);
+           XmlTextReader reader;
+
+           try
+           {
+               reader = new XmlTextReader(i_filename);
+           }
+           catch
+           {
+               MessageBox.Show("Failed to read ranges file!", "error");
+               return;
+           }
 
 
            //TODO:
-
-            // handle XML in wrong format
+           //handle XML in wrong format
 
            while (reader.Read())
            {
@@ -422,8 +431,16 @@ namespace ICM_Adviser
         {
             resetDescription();
 
-            //TODO:  handle file not found exception
-            XmlTextReader reader = new XmlTextReader(i_filename);
+            XmlTextReader reader;
+            try
+            {
+                reader = new XmlTextReader(i_filename);
+            }
+            catch
+            {
+                MessageBox.Show("Failed to read Description File!", "Error");
+                return;
+            }
 
             //TODO:
             // handle XML in wrong format
@@ -575,9 +592,17 @@ namespace ICM_Adviser
         {
              XmlDocument xml = new XmlDocument();
 
-             xml.Load("Configuration.xml");
+             try
+             {
+                 xml.Load("Configuration.xml");
+             }
+             catch
+             {  
+                 MessageBox.Show("Failed to read configuration","Error");
+                 return;
+             }
              XmlNodeList xnList = xml.SelectNodes("/CONF");
-
+            
              foreach (XmlNode xn in xnList)
              {
                  m_ICM_Filename         = xn["ICM"].InnerText;
