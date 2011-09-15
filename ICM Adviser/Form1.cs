@@ -23,15 +23,13 @@ namespace ICM_Adviser
         const int MAX_ACTION = 2 + 1;
 
         private string m_ICM_Filename;
-        //  private string m_ChipEV_Filename        = "ChipEV_Ranges.xml";
-        //  private string m_descriptionFilename    = "Descriptions.xml";
 
         private string m_ChipEV_Filename;
         private string m_descriptionFilename;
 
         private string m_save_file = "";
 
-        //private string m_RangeFileName;
+        private string encryptionKey =   @"George81";
 
         private Decimal[, , ,] Range = new Decimal[MAX_PL, MAX_P, MAX_M, MAX_ACTION];
 
@@ -626,7 +624,7 @@ namespace ICM_Adviser
         {
             try
             {
-                string password = @"myKey123"; // Your Key Here
+                string password = encryptionKey; // Your Key Here
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
 
@@ -660,7 +658,7 @@ namespace ICM_Adviser
         {
 
             {
-                string password = @"myKey123"; // Your Key Here
+                string password = encryptionKey; // Your Key Here
 
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
