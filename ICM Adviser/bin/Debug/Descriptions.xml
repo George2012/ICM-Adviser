@@ -1,0 +1,143 @@
+<Descriptions>
+  <Range Value="10">some text</Range>
+  <Range Value="20">new text</Range>
+  <Range Value="50">my text</Range>
+  <Range Value="23">some description</Range>
+  <Range Value="0.1">cev p1 m1</Range>
+  <Range Value="11">cev p1 m1</Range>
+  <Range Value="21">cev p2 m1</Range>
+  <Range Value="2.01">201</Range>
+  <Range Value="3.01">3.01</Range>
+  <Range Value="4.01">4.01</Range>
+  <Range Value="-1">N/A</Range>
+  <Range Value="5.01">5.01</Range>
+
+  <Range Value="-10">Not avaiable sitation</Range>
+  <Range Value="3.8">TT+ 
+AK
+AQs+</Range>
+  <Range Value="4.2">99+
+AK
+AQs+</Range>
+  <Range Value="5.1">99+
+AQ+</Range>
+  <Range Value="5.6">88+
+AQ+</Range>
+  <Range Value="5.9">88+,
+AQ+
+AJs+</Range>
+  <Range Value="9.5">66+   AJ+  ATs+  KTs+
+QJs   JTs
+</Range>
+  <Range Value="13.6">33+   AT+   A8s+   KQ  KTs
+QTs+   JTs</Range>
+  <Range Value="26.4">22+    A8+    A2s+
+KT+  K4s+   QT+
+Q8s  JT    J8s+</Range>
+  <Range Value="48.4">22+   A2+  K4+
+Q8+  Q2s+
+J9+  J5s+  T9</Range>
+  <Range Value="82.2">22+  A2+  K2+  Q2+  J2+
+T4+   T2s+  95+ 92s+</Range>
+  <Range Value="8.1">77+
+AJ+
+ATS+
+KJs+</Range>
+  <Range Value="11.9">44+  AT+  A9s+
+KTs+  QTs+   JTs</Range>
+  <Range Value="17.6">22+  AT+  A4s+  KJ+
+K9s+   Q9s+  J9s+   T9s+  98s</Range>
+  <Range Value="36.7">22+ A3+   A2s+  K9+ k2s+
+QT+  Q5s+  JT   J7s+</Range>
+  <Range Value="56.0">22+  A2+ K2+ Q7+
+Q2s+   J8+  J3s+  T8+  T4s+</Range>
+  <Range Value="85.5">22+  A2+  K2+  Q2+  J2+ 
+T2+ 95+ 92s+  85+</Range>
+  <Range Value="6.6">77+ AQ+ AJs+  KQs</Range>
+  <Range Value="9.2">66+  AJ+  KTs+  QJs</Range>
+  <Range Value="13.4">44+  AT+ A8s+
+KQ KTs+ QTs+ JTs T9s</Range>
+  <Range Value="18.6">22+  A9+  A4s+  KJ+
+K9s+  Q9s+  J9s+  T9s  98s</Range>
+  <Range Value="32.5">22+  A4+ A2s  K9+
+K4s+  QT+  Q8s+
+JT   J8s+</Range>
+  <Range Value="51.7">22+  A2+  K5+   K2s+
+Q8+  Q2s+  J8+  J4s+   T8+</Range>
+  <Range Value="32.4">22+  A4+  A2s+  K9+
+K4s+  QT+  Q8s+   JT  J8s+</Range>
+  <Range Value="64.1">22+   A2+  K2+ Q3+
+Q2s+  J7+  J2s+  T7+  T3s+</Range>
+  <Range Value="88.2">22+   A2+  K2+
+Q2+  J2+  T2+  94+  92s+   84+</Range>
+  <Range Value="6.3">77+  AQ+  AJs+</Range>
+  <Range Value="9.8">66+   AJ+  ATs+  KTs+  QTs+  JTs</Range>
+  <Range Value="17.2">33+  AT+  A5s+
+A7+  A7  KJ+  K9s+ 
+QJ  Q9s+  J9s+</Range>
+  <Range Value="26.7">22+   A8+  A2s+  KT+
+K5s+   QT+  Q8s+  JT J8s+</Range>
+  <Range Value="47.5">22+  A2+  K6+  K2s+
+Q9+  J9+   J4+  T8+</Range>
+  <Range Value="66.5">22+   A2+  K2+  Q4+
+Q2s+  J7+  J2s+  T7+  T2s+</Range>
+  <Range Value="89.1">22+  A2+  K2+  Q2+
+J2+  T2+  94+ 92s+  84+</Range>
+  <Range Value="8.7">77+  AJ+ ATs+
+KTs+ QJs</Range>
+  <Range Value="10.3">77+   AJ+  ATs+
+KQ  KTs+ QTs+  JTs</Range>
+  <Range Value="14.3">66+  AT+  A8s+
+KJ+   K9s+   Q9s+  J9s+ T9s</Range>
+  <Range Value="21.7">55+  AT+  A3s+   KT+  K7s+
+QT+ Q8s+  JT J8s+</Range>
+  <Range Value="29.1">44+   A9+  A2s+
+K9+  K3s+  QT+  Q6s+
+J9+  J7s+</Range>
+  <Range Value="42.7">22+   A3+  A2s+  K8+  
+K2s+   Q9+  J9+  J5s+</Range>
+  <Range Value="50.5">22+  A2+  K6+ K2s+  Q8+  Q2s+
+J8+ J3s+  T8+</Range>
+  <Range Value="68.3">22+  A2+   K2+  Q5+   Q2s+
+J7+  J2s+  T6+  T2s+</Range>
+  <Range Value="76.8">22+  A2+  K2+  Q2+   J5+
+J2s+  T6+  T2s+   96+</Range>
+  <Range Value="91.9">22+  A2+  K2+ Q2+
+J2+ T2+  93+ 92s+ 84+</Range>
+  <Range Value="8.0">66+  AJ+  ATs+</Range>
+  <Range Value="9.4">55+  AJ+  ATs+  KJs+  QJs</Range>
+  <Range Value="14.0">44+    AT+  A9s+  Q9s+  J9s+  T9s</Range>
+  <Range Value="27.0">22+  A9+  A2s+  KT+  K4s+  QT+
+Q7s+   JT  J7s+</Range>
+  <Range Value="53.2">22+  A2+  K6+  K2s+
+Q8+  Q2s+   Q8+  Q2s+
+J8+  J2s+ T7+</Range>
+  <Range Value="77.7">22+  A2+  K2+  Q3+
+Q2s+  J4+   J2s+  T6+  T2s+</Range>
+  <Range Value="86.4">22+  A2+  K2+  Q2+  J2+
+T4+  T2s+  95+  92s+</Range>
+  <Range Value="98.2">22+  A2+  K2+  Q2+  J2+   T2+
+ 92+  82+  73+  72s+</Range>
+  <Range Value="25.8">22+  A9+  A2s+
+KT+  K5s+  QT+  Q8s+
+JT  J8s+</Range>
+  <Range Value="45.7">22+  A4+  A2s+  K7+
+K2s+   Q8+   Q2s+   J8+  J4s+</Range>
+  <Range Value="79.8">22+   A2+  K2+  Q2+ J4+  J2+
+T6+  T2s+  95+</Range>
+  <Range Value="91.0">22+  A2+  K2+  Q2+ J2+
+T2+  93+   92s+  84+</Range>
+  <Range Value="100">any 2</Range>
+  <Range Value="3.9">99+
+AK</Range>
+  <Range Value="4.7">88+ AK   AQs</Range>
+  <Range Value="7.1">66+  AQ+  AJs+  KQs</Range>
+  <Range Value="22.8">22+  AJ+  A9s+
+KT+  K5s+  QT+  Q8s+   JT J*s+</Range>
+  <Range Value="8.3">66+  AJ+  ATs+  KQs</Range>
+  <Range Value="10.7">44+  AT+  KJs+  QJs</Range>
+  <Range Value="15.8">22+  A9+  A8s+
+KQ  KTs+   Q9s+  J9s+  T9s</Range>
+  <Range Value="59.6">22+  A2+  K6+  K2s+
+Q8+  Q2s+    J7+   J2s+  T7+</Range>
+</Descriptions>

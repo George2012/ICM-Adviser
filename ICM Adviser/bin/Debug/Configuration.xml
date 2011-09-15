@@ -1,0 +1,5 @@
+<CONF>
+	<ICM>ICM_Ranges.xml</ICM>
+	<CHIPEV>turbo_sng180_ranges.xml</CHIPEV>
+	<DESC>turbo_sng180_descriptions.xml</DESC>
+</CONF>
