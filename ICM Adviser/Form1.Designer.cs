@@ -54,6 +54,7 @@
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableDecsriptionUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.buttonDescription = new System.Windows.Forms.Button();
@@ -71,7 +72,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.disableDecsriptionUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,7 +152,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(149, 250);
+            this.buttonSave.Location = new System.Drawing.Point(149, 316);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(58, 27);
             this.buttonSave.TabIndex = 12;
@@ -165,7 +165,7 @@
             this.textBoxDescription.Location = new System.Drawing.Point(239, 151);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(198, 83);
+            this.textBoxDescription.Size = new System.Drawing.Size(198, 148);
             this.textBoxDescription.TabIndex = 13;
             this.textBoxDescription.Validated += new System.EventHandler(this.textBoxDescription_Validated);
             // 
@@ -196,28 +196,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveAsToolStripMenuItem.Text = "Save As..";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // descriptionToolStripMenuItem
@@ -302,13 +302,20 @@
             this.resetToolStripMenuItem.Text = "Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
+            // disableDecsriptionUpdateToolStripMenuItem
+            // 
+            this.disableDecsriptionUpdateToolStripMenuItem.Name = "disableDecsriptionUpdateToolStripMenuItem";
+            this.disableDecsriptionUpdateToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.disableDecsriptionUpdateToolStripMenuItem.Text = "Disable Decsription  Update";
+            this.disableDecsriptionUpdateToolStripMenuItem.Click += new System.EventHandler(this.disableDecsriptionUpdateToolStripMenuItem_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // buttonDescription
             // 
-            this.buttonDescription.Location = new System.Drawing.Point(239, 250);
+            this.buttonDescription.Location = new System.Drawing.Point(239, 316);
             this.buttonDescription.Name = "buttonDescription";
             this.buttonDescription.Size = new System.Drawing.Size(198, 27);
             this.buttonDescription.TabIndex = 15;
@@ -372,10 +379,15 @@
             "7",
             "8",
             "9",
-            "10"});
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
             this.listBoxM.Location = new System.Drawing.Point(182, 100);
             this.listBoxM.Name = "listBoxM";
-            this.listBoxM.Size = new System.Drawing.Size(25, 134);
+            this.listBoxM.Size = new System.Drawing.Size(25, 199);
             this.listBoxM.TabIndex = 21;
             this.listBoxM.SelectedIndexChanged += new System.EventHandler(this.listBoxM_SelectedIndexChanged);
             // 
@@ -469,18 +481,11 @@
             this.label9.TabIndex = 30;
             this.label9.Text = "EP";
             // 
-            // disableDecsriptionUpdateToolStripMenuItem
-            // 
-            this.disableDecsriptionUpdateToolStripMenuItem.Name = "disableDecsriptionUpdateToolStripMenuItem";
-            this.disableDecsriptionUpdateToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.disableDecsriptionUpdateToolStripMenuItem.Text = "Disable Decsription  Update";
-            this.disableDecsriptionUpdateToolStripMenuItem.Click += new System.EventHandler(this.disableDecsriptionUpdateToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 287);
+            this.ClientSize = new System.Drawing.Size(481, 355);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);

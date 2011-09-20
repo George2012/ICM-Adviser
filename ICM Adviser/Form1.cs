@@ -19,7 +19,7 @@ namespace ICM_Adviser
         //2160 permutations
         const int MAX_PL = 9 + 1;     // 2 to 9
         const int MAX_P = 8 + 1; // 0 to 8
-        const int MAX_M = 10 + 1;    // 1 to 10 
+        const int MAX_M = 15 + 1;    // 1 to 10 
         const int MAX_ACTION = 2 + 1;
 
         private string m_ICM_Filename;
@@ -620,6 +620,13 @@ namespace ICM_Adviser
             }
         }
 
+        ///<summary>
+        /// Steve Lydford - 12/05/2008.
+        ///
+        /// Encrypts a file using Rijndael algorithm.
+        ///</summary>
+        ///<param name="inputFile"></param>
+        ///<param name="outputFile"></param>
         private void EncryptFile(string inputFile, string outputFile)
         {
             try
@@ -654,6 +661,14 @@ namespace ICM_Adviser
             }
         }
 
+
+        ///<summary>
+        /// Steve Lydford - 12/05/2008.
+        ///
+        /// Decrypts a file using Rijndael algorithm.
+        ///</summary>
+        ///<param name="inputFile"></param>
+        ///<param name="outputFile"></param>
         private void DecryptFile(string inputFile, string outputFile)
         {
 

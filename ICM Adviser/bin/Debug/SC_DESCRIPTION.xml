@@ -1,0 +1,80 @@
+<Descriptions>
+  <Range Value="9">Any 2  except
+J4o-  T6o- 97o- T3s- 76s-</Range>
+  <Range Value="3">Any 2  except
+83o- , 42s-</Range>
+  <Range Value="6">Any 2  except
+95o- , 84s- , 92s-
+</Range>
+  <Range Value="12">22+ J3s+  T8o+ 97s+  Q3o+ K2o+</Range>
+  <Range Value="15">22+ , Q5o+ 98s+ Q2s+ J7s+  T8s+
+J9o+ K2o+</Range>
+  <Range Value="18">22+  Q4s+  Q8o+  K2o+  J8s+
+T9s+  JTo+  Q9o+ K2o+</Range>
+  <Range Value="21">22+  K3o+ K2s+ Q6s+ Q9o+
+T9s+   JTo+   A2o+</Range>
+  <Range Value="24">22+  K5o+ K2s+  QTo+ Q8s+
+J9s+  A2o+ JTs+</Range>
+  <Range Value="27">22+  A2o+  K3s+ K7o+
+QTo+ Q9s+   JTs+</Range>
+  <Range Value="30">22+  A2o+  K4s+  K9o+
+Q9s+  QJo+ JTs+</Range>
+  <Range Value="33">22+  A2o+  K6s+  K9o+
+JTs+</Range>
+  <Range Value="36">22+  A2o+  K7s+  KTo+ JTs+</Range>
+  <Range Value="39">22+  A2o+  K8s+  KTo+ QTs+</Range>
+  <Range Value="42">22+  A2o+ K9s+ KTo+ QTs+</Range>
+  <Range Value="45">22+  A2o+  K9s+  KJo+ QJs+ </Range>
+  <Range Value="48">22+  A3o+ A2s+ KJo+  QJs+</Range>
+  <Range Value="54">33+  A6o+  A2s+  KQo+</Range>
+  <Range Value="60">33+  A3s+ A7o+ KTs+</Range>
+  <Range Value="66">44+  A4s+ A8o+  KJs+</Range>
+  <Range Value="72">44+  A5s+  A9o+  KJs+</Range>
+  <Range Value="-1">N/A</Range>
+  <Range Value="78">44+  A7s+ A9o+ KQs+</Range>
+  <Range Value="84">55+  A8s+ ATo+  KQs</Range>
+  <Range Value="90">55+  A9s+ ATo+</Range>
+  <Range Value="63">33+  A4s+  A8o+ KJs+</Range>
+  <Range Value="81">44+   A8s+  A9o+  KQs</Range>
+  <Range Value="99">66+  A9s+   ATo+</Range>
+  <Range Value="108">66+  ATs+  AJo+</Range>
+  <Range Value="117">77+  ATs+  AJo+</Range>
+  <Range Value="126">77+  ATs+  AJo+</Range>
+  <Range Value="135">88+  ATs+  AJo+</Range>
+  <Range Value="96">55+  A9s+  ATo+</Range>
+  <Range Value="120">77+  ATs+  AJo+</Range>
+  <Range Value="132">66+  ATs+  AJo+</Range>
+  <Range Value="144">88+  AJs+  AQo+</Range>
+  <Range Value="156">88+  AJs+  AQo+</Range>
+  <Range Value="68">N/A</Range>
+  <Range Value="168">99+   AJs+  AQo+</Range>
+  <Range Value="180">99+   AJs+  AQo+</Range>
+  <Range Value="75">44+  A7s+  A9o+  KQs</Range>
+  <Range Value="105">66+   ATs+  ATo+</Range>
+  <Range Value="150">88+ AJs+  AQo+</Range>
+  <Range Value="165">99+  AJs+  AQo+</Range>
+  <Range Value="195">TT+  AQs+  AKo</Range>
+  <Range Value="210">TT+  AQs+ AKo</Range>
+  <Range Value="225">TT+  AQs+  AKo</Range>
+  <Range Value="148">88+   AJs+   AQo+</Range>
+  <Range Value="162">99+  AJs+  AQo+</Range>
+  <Range Value="198">TT+    AQs+  AKo</Range>
+  <Range Value="216">TT+    AQs+  AKo</Range>
+  <Range Value="234">TT+  AQs+  AKo</Range>
+  <Range Value="252">JJ+  AQs+   AKo</Range>
+  <Range Value="270">JJ+   AQs+  AKo</Range>
+  <Range Value="147">88+  AJs+  AQo+</Range>
+  <Range Value="172">99+   AJs+  AQo+</Range>
+  <Range Value="189">99+  AQs+  AQo+</Range>
+  <Range Value="231">TT+  AQs+   AKo</Range>
+  <Range Value="273">JJ+  AQs+  AKo</Range>
+  <Range Value="294">JJ+    AKo</Range>
+  <Range Value="315">JJ+   AKo</Range>
+  <Range Value="196">TT+  AQs+  AKo</Range>
+  <Range Value="240">TT+  AQs+ AKo</Range>
+  <Range Value="264">JJ+ AQs+  AKo</Range>
+  <Range Value="288">JJ+  AKo</Range>
+  <Range Value="312">JJ+  AKo</Range>
+  <Range Value="336">QQ+</Range>
+  <Range Value="360">QQ+</Range>
+</Descriptions>
