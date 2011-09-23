@@ -44,9 +44,12 @@ namespace ICM_Adviser
             for (int pl = 0; pl < MAX_PL; pl++)
                 for (int p = 0; p < MAX_P; p++)
                     for (int m = 0; m < MAX_M; m++)
-                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R); a++)
+                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R)+1; a++)
                         {
                             Range[pl, p, m, a] = -1;
+
+                            //int multiplayer =(int) (0.5*a*a + 0.5*a + 1);
+                            //Range[pl, p, m, a] = 3 * p * m * multiplayer;
                         }
         }
 
@@ -211,7 +214,11 @@ namespace ICM_Adviser
 
         private void openXML(string i_filename)
         {
+    
+
             resetRange();
+
+          //  return;
 
             XmlTextReader reader;
 
