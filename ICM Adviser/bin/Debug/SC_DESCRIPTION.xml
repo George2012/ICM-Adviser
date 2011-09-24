@@ -133,4 +133,27 @@ JTs+</Range>
   <Range Value="1248">AA</Range>
   <Range Value="1344">AA</Range>
   <Range Value="1440">AA</Range>
+  <Range Value="0.01">Tight:
+22+  AQo+  AJs+ KJs-KTs (not KQs)  QJs-JTs
+Avarage:
+22+ ATo+ A2s+ KQo  K9s+ QJs-Q9s 
+45s-JTs  97s-J9s  J8s
+Loose:
+22+  A2o+  K2o+  Q6o+  Q2s+ J8o+
+J2s+ T9o-T8o  T3s-T7s  97o-98o
+93s-96s  86-o87o 84s-85s  76o 73s-75s
+65o 63s-64s 52s-54s  42s-43s</Range>
+  <Range Value="0">N/A</Range>
+  <Range Value="0.03">Tight:
+TT+  AK
+Avarage:
+55+  AJo+   ATs+
+Loose:
+22+  A2o+  KTo+  K6s+  QJ  Q9s+  JTs</Range>
+  <Range Value="0.05">Tight:
+JJ+  AK
+Avarage:
+99+   AQo+ AJs+
+Loose:
+44+  A8o+  A7s+  KQo   KTs+</Range>
 </Descriptions>

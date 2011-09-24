@@ -48,8 +48,8 @@ namespace ICM_Adviser
                         {
                             Range[pl, p, m, a] = -1;
 
-                            //int multiplayer =(int) (0.5*a*a + 0.5*a + 1);
-                            //Range[pl, p, m, a] = 3 * p * m * multiplayer;
+                            int multiplayer =(int) (0.5*a*a + 0.5*a + 1);
+                            Range[pl, p, m, a] = 3 * p * m * multiplayer;
                         }
         }
 
@@ -153,7 +153,7 @@ namespace ICM_Adviser
                 {
                     for (int m = 0; m < MAX_M; m++)
                     {
-                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R); a++)
+                        for (int a = Convert.ToInt32(Action.F); a < Convert.ToInt32(Action.R) + 1; a++)
                         {
                             Decimal range = Range[pl, p, m, a];
 
@@ -217,8 +217,6 @@ namespace ICM_Adviser
     
 
             resetRange();
-
-          //  return;
 
             XmlTextReader reader;
 
